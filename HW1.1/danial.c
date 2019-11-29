@@ -4,9 +4,18 @@
 #include<sys/types.h>
 #include<string.h>
 
-
+int isEven(char in){
+  if(in >= 48 && in <= 59){
+    if(in%2 ==0)
+        return in-48;
+    else
+        return 0;
+  }
+  return -1;
+}
 int main()
 {
+
     int pipeArray[2];
 
     char str[100];
@@ -47,6 +56,21 @@ int main()
         printf("%s\n", "dad recieved! : ");
         printf("%s\n",recievedStr );
         close(pipeArray[0]);
+
+        int evenSum = 0;
+        for(int i=0;i<100;i++){
+          if(recievedStr[i] == NULL)
+              break;
+          int out = isEven(recievedStr[i]);
+            if(out != -1){
+              evenSum += out;
+            }
+            else{
+              printf("%s\n","wrong input!" );
+              return -1;
+            }
+        }
+        printf("%s : %d\n","The sum of even digits in number is",evenSum);
 
 
         exit(0);
