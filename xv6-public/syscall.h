@@ -22,3 +22,5 @@
 #define SYS_close  21
 //get children define number
 #define SYS_getChildren  22
+//count
+#define SYS_getCount  23

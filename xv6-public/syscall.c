@@ -14,6 +14,19 @@
 // to a saved program counter, and then the first argument.
 
 // Fetch the int at addr from the current process.
+
+//dan implimentation
+static int numbersOfUsedProcess[23] = {0};
+
+
+int MinegetCounter(int in){
+  cprintf("%s\n", "is here");
+  if(in < 23 && in>=0)
+    return numbersOfUsedProcess[in];
+  else
+    return -1;
+}
+
 int
 fetchint(uint addr, int *ip)
 {
@@ -60,7 +73,7 @@ argptr(int n, char **pp, int size)
 {
   int i;
   struct proc *curproc = myproc();
- 
+
   if(argint(n, &i) < 0)
     return -1;
   if(size < 0 || (uint)i >= curproc->sz || (uint)i+size > curproc->sz)
@@ -104,6 +117,8 @@ extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
 extern int sys_getChildren(void);
+// extern int sys_getCount(void);
+extern int sys_getCount(int);
 
 
 static int (*syscalls[])(void) = {
@@ -129,7 +144,20 @@ static int (*syscalls[])(void) = {
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
 [SYS_getChildren]   sys_getChildren,
+[SYS_getCount]   sys_getCount,
 };
+
+
+
+static int (*syscalls[])(int) = {
+[SYS_getCount]   sys_getCount,
+};
+
+
+// static int (*syscalls[])(int) = {
+// [SYS_getCount]   sys_getCount,
+// };
+
 
 void
 syscall(void)
@@ -138,9 +166,16 @@ syscall(void)
   struct proc *curproc = myproc();
 
   num = curproc->tf->eax;
-  if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
+  if(num > 0 && num < NELEM(syscalls) && num !=23 && syscalls[num]) {
+    //danial implimentation
+    numbersOfUsedProcess[num]++;
     curproc->tf->eax = syscalls[num]();
-  } else {
+  }
+  else if(num == 23){
+    numbersOfUsedProcess[num]++;
+    curproc->tf->eax = syscalls[num](int);
+  }
+  else {
     cprintf("%d %s: unknown sys call %d\n",
             curproc->pid, curproc->name, num);
     curproc->tf->eax = -1;

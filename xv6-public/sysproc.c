@@ -7,17 +7,21 @@
 #include "mmu.h"
 #include "proc.h"
 #include "PIDsaver.c"
-int check =0;
+// #include "syscall.h"
+
+extern int MinegetCounter(int);
 
 int
 sys_getpid(void)
 {
+  cprintf("returning PID proccess...\n");
   return myproc()->pid;
 }
 
 int
 sys_fork(void)
 {
+  cprintf("forking proccess...\n");
   int dadPID = sys_getpid();
   addPID(dadPID);
   cprintf("id dad : %d\n",dadPID);
@@ -34,6 +38,7 @@ sys_fork(void)
 int
 sys_exit(void)
 {
+  cprintf("exiting proccess...\n");
   exit();
   return 0;  // not reached
 }
@@ -41,14 +46,15 @@ sys_exit(void)
 int
 sys_wait(void)
 {
+  cprintf("waiting proccess...\n");
   return wait();
 }
 
 int
 sys_kill(void)
 {
+  cprintf("killing proccess...\n");
   int pid;
-
   if(argint(0, &pid) < 0)
     return -1;
   return kill(pid);
@@ -59,6 +65,7 @@ sys_kill(void)
 int
 sys_sbrk(void)
 {
+  cprintf("sbrk proccess...\n");
   int addr;
   int n;
 
@@ -73,6 +80,8 @@ sys_sbrk(void)
 int
 sys_sleep(void)
 {
+  cprintf("sleep proccess...\n");
+
   int n;
   uint ticks0;
 
@@ -96,6 +105,8 @@ sys_sleep(void)
 int
 sys_uptime(void)
 {
+  cprintf("uptime proccess...\n");
+
   uint xticks;
 
   acquire(&tickslock);
@@ -108,6 +119,20 @@ sys_uptime(void)
 
 int
 sys_getChildren(){
+  cprintf("getChildren proccess...\n");
 
 return getChildrenPIDs(sys_getpid());
+}
+
+
+
+int
+sys_getCount(int in){
+//  char **a;
+  cprintf("getCount proccess...\n");
+  cprintf("wtf : %d\n",in);
+  //int in=0;
+  //fetchstr(in, a);
+
+  return MinegetCounter(in);
 }
