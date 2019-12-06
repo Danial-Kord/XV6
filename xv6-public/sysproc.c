@@ -6,10 +6,19 @@
 #include "memlayout.h"
 #include "mmu.h"
 #include "proc.h"
+#include "PIDsaver.c"
+int check =0;
+
+int
+sys_getpid(void)
+{
+  return myproc()->pid;
+}
 
 int
 sys_fork(void)
 {
+  addPID(sys_getpid());
   return fork();
 }
 
@@ -36,11 +45,7 @@ sys_kill(void)
   return kill(pid);
 }
 
-int
-sys_getpid(void)
-{
-  return myproc()->pid;
-}
+
 
 int
 sys_sbrk(void)
@@ -95,10 +100,5 @@ sys_uptime(void)
 int
 sys_getChildren(){
 
-//cprintf("hi");
-
-
-return 222;
-//shold do implimentation here
-
+return getChildrenPIDs(sys_getpid());
 }
