@@ -5,9 +5,6 @@ int PIDs[200] = { -1 };
 int index =0;
 
 
-void add(){
-  index++;
-}
 void addPID(int pid){
   for (int i = 0; i < 50 && PIDs[i] != -1; i++) {
     if(PIDs[i] == pid)
@@ -35,7 +32,7 @@ int getChildrenPIDs(int pid){
   for (int i = 0; i < 50; i++) {
     if(PIDs[i] == pid){
       int index=1;
-      int output =0;
+      int output =1;
       for (int j = 0; j < 10 && ChPIDs[i][j]!= 0; j++) {
         output += index * ChPIDs[i][j];
         index *= 10;

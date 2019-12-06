@@ -18,8 +18,20 @@ sys_getpid(void)
 int
 sys_fork(void)
 {
-  addPID(sys_getpid());
-  return fork();
+  int dadPID = sys_getpid();
+  addPID(dadPID);
+  cprintf("id dad : %d\n",dadPID);
+  int output = fork();
+  if(output == 0){
+    // addChildPID(dadPID,sys_getpid());
+    // cprintf("id child : %d\n",sys_getpid());
+    exit();
+  }
+      cprintf("id child : %d\n",output);
+  addChildPID(dadPID,output);
+    wait();
+    return output;
+
 }
 
 int
