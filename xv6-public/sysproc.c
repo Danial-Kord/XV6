@@ -1,4 +1,5 @@
 #include "types.h"
+#include "stat.h"
 #include "x86.h"
 #include "defs.h"
 #include "date.h"
@@ -7,9 +8,11 @@
 #include "mmu.h"
 #include "proc.h"
 #include "PIDsaver.c"
+// #include "getCountTest.c"
 // #include "syscall.h"
 
 extern int MinegetCounter(int);
+
 
 int
 sys_getpid(void)
@@ -125,10 +128,11 @@ return getChildrenPIDs(sys_getpid());
 }
 
 
-
 int
 sys_getCount(int in){
 //  char **a;
+argint(0, &in);
+
   cprintf("getCount proccess...\n");
   cprintf("wtf : %d\n",in);
   //int in=0;

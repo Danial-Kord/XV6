@@ -20,7 +20,9 @@ static int numbersOfUsedProcess[23] = {0};
 
 
 int MinegetCounter(int in){
+  in--;
   cprintf("%s\n", "is here");
+
   if(in < 23 && in>=0)
     return numbersOfUsedProcess[in];
   else
@@ -117,8 +119,8 @@ extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
 extern int sys_getChildren(void);
-// extern int sys_getCount(void);
-extern int sys_getCount(int);
+extern int sys_getCount(void);
+// extern int sys_getCount(int);
 
 
 static int (*syscalls[])(void) = {
@@ -148,12 +150,6 @@ static int (*syscalls[])(void) = {
 };
 
 
-
-static int (*syscalls[])(int) = {
-[SYS_getCount]   sys_getCount,
-};
-
-
 // static int (*syscalls[])(int) = {
 // [SYS_getCount]   sys_getCount,
 // };
@@ -166,16 +162,11 @@ syscall(void)
   struct proc *curproc = myproc();
 
   num = curproc->tf->eax;
-  if(num > 0 && num < NELEM(syscalls) && num !=23 && syscalls[num]) {
+  if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
     //danial implimentation
-    numbersOfUsedProcess[num]++;
+    numbersOfUsedProcess[num-1]++;
     curproc->tf->eax = syscalls[num]();
-  }
-  else if(num == 23){
-    numbersOfUsedProcess[num]++;
-    curproc->tf->eax = syscalls[num](int);
-  }
-  else {
+  } else {
     cprintf("%d %s: unknown sys call %d\n",
             curproc->pid, curproc->name, num);
     curproc->tf->eax = -1;
