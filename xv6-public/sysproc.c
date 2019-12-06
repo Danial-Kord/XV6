@@ -23,15 +23,12 @@ sys_fork(void)
   cprintf("id dad : %d\n",dadPID);
   int output = fork();
   if(output == 0){
-    // addChildPID(dadPID,sys_getpid());
-    // cprintf("id child : %d\n",sys_getpid());
     exit();
   }
-      cprintf("id child : %d\n",output);
-  addChildPID(dadPID,output);
+    cprintf("id child : %d\n",output);
+    addChildPID(dadPID,output);
     wait();
     return output;
-
 }
 
 int
