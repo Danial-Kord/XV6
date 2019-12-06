@@ -89,3 +89,16 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+
+
+int
+sys_getChildren(){
+
+//cprintf("hi");
+
+
+return 222;
+//shold do implimentation here
+
+}
