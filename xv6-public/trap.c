@@ -14,6 +14,8 @@ extern uint vectors[];  // in vectors.S: array of 256 entry pointers
 struct spinlock tickslock;
 uint ticks;
 
+int clocksSpent=0;
+
 void
 tvinit(void)
 {
@@ -37,22 +39,27 @@ void
 trap(struct trapframe *tf)
 {
   if(tf->trapno == T_SYSCALL){
-    if(myproc()->killed)
+    if(myproc()->killed){
+      clocksSpent = 10;
       exit();
+    }
     myproc()->tf = tf;
     syscall();
-    if(myproc()->killed)
+    if(myproc()->killed){
+      clocksSpent = 10;
       exit();
+    }
     return;
   }
-
+  
   switch(tf->trapno){
   case T_IRQ0 + IRQ_TIMER:
-    if(cpuid() == 0){
+    if(cpuid() == 0 && clocksSpent == 10){
       acquire(&tickslock);
       ticks++;
       wakeup(&ticks);
       release(&tickslock);
+      clocksSpent = 0;
     }
     lapiceoi();
     break;
@@ -97,16 +104,29 @@ trap(struct trapframe *tf)
   // Force process exit if it has been killed and is in user space.
   // (If it is still executing in the kernel, let it keep running
   // until it gets to the regular system call return.)
-  if(myproc() && myproc()->killed && (tf->cs&3) == DPL_USER)
+  if(myproc() && myproc()->killed && (tf->cs&3) == DPL_USER){
+    clocksSpent = 10;
     exit();
+  }
 
   // Force process to give up CPU on clock tick.
   // If interrupts were on while locks held, would need to check nlock.
   if(myproc() && myproc()->state == RUNNING &&
-     tf->trapno == T_IRQ0+IRQ_TIMER)
-    yield();
+     tf->trapno == T_IRQ0+IRQ_TIMER){
+     clocksSpent++;
+     cprintf("\npassed....%d is current clocks spened on this PID : %s\n",clocksSpent,myproc()->name);
+     if(clocksSpent == QUANTUM){
+      //clocksSpent = 0;
+      cprintf("\n%s changed ...\n",myproc()->name);
+        yield();
+     }
+
+  }
 
   // Check if the process has been killed since we yielded
-  if(myproc() && myproc()->killed && (tf->cs&3) == DPL_USER)
+  if(myproc() && myproc()->killed && (tf->cs&3) == DPL_USER){
+    clocksSpent = 10;
     exit();
+
+  }
 }
