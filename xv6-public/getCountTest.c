@@ -29,7 +29,7 @@ for (int i = lengh-1; i >=0; i--) {
 }
 
  i = getCount(a);
-printf(1,"the number of used of systemcall number %d is : %d\n",a,i);
+printf(1,"\nthe number of used of systemcall number %d is : %d\n",a,i);
 exit();
 return 0;
 }

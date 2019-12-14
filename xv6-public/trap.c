@@ -46,7 +46,7 @@ trap(struct trapframe *tf)
     myproc()->tf = tf;
     syscall();
     if(myproc()->killed){
-      clocksSpent = 10;
+      clocksSpent = QUANTUM;
       exit();
     }
     return;
@@ -54,7 +54,7 @@ trap(struct trapframe *tf)
   
   switch(tf->trapno){
   case T_IRQ0 + IRQ_TIMER:
-    if(cpuid() == 0 && clocksSpent == 10){
+    if(cpuid() == 0 /*&& clocksSpent == QUANTUM*/){
       acquire(&tickslock);
       ticks++;
       wakeup(&ticks);
@@ -105,7 +105,7 @@ trap(struct trapframe *tf)
   // (If it is still executing in the kernel, let it keep running
   // until it gets to the regular system call return.)
   if(myproc() && myproc()->killed && (tf->cs&3) == DPL_USER){
-    clocksSpent = 10;
+    clocksSpent = QUANTUM;
     exit();
   }
 
@@ -114,18 +114,18 @@ trap(struct trapframe *tf)
   if(myproc() && myproc()->state == RUNNING &&
      tf->trapno == T_IRQ0+IRQ_TIMER){
      clocksSpent++;
-     cprintf("\npassed....%d is current clocks spened on this PID : %s\n",clocksSpent,myproc()->name);
-     if(clocksSpent == QUANTUM){
-      //clocksSpent = 0;
-      cprintf("\n%s changed ...\n",myproc()->name);
+    // cprintf("\npassed....%d is current clocks spened on this PID : %s     pid : %d\n",clocksSpent,myproc()->name,myproc()->pid);
+    //  if(clocksSpent == QUANTUM){
+      clocksSpent = 0;
+      // cprintf("\n%s changed ...\n",myproc()->name);
         yield();
-     }
+    //  }
 
   }
 
   // Check if the process has been killed since we yielded
   if(myproc() && myproc()->killed && (tf->cs&3) == DPL_USER){
-    clocksSpent = 10;
+    clocksSpent = QUANTUM;
     exit();
 
   }
