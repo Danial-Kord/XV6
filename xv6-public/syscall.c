@@ -15,19 +15,9 @@
 
 // Fetch the int at addr from the current process.
 
-//dan implimentation
-static int numbersOfUsedProcess[23] = {0};
 
 
-int MinegetCounter(int in){
-  in--;
-  cprintf("%s\n", "is here");
 
-  if(in < 23 && in>=0)
-    return numbersOfUsedProcess[in];
-  else
-    return -1;
-}
 
 int
 fetchint(uint addr, int *ip)
@@ -164,7 +154,7 @@ syscall(void)
   num = curproc->tf->eax;
   if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
     //danial implimentation
-    numbersOfUsedProcess[num-1]++;
+    myproc()->count[num-1]++;
     curproc->tf->eax = syscalls[num]();
   } else {
     cprintf("%d %s: unknown sys call %d\n",

@@ -11,19 +11,12 @@
 // #include "getCountTest.c"
 // #include "syscall.h"
 
-extern int MinegetCounter(int);
 
-void updateCounter(int in){
-if(in <= 23 && in>=1){
-  myproc()->count[in-1]++;
- // cprintf("updated data for pid :%d  count sysnumber %d : %d\n",myproc()->pid,in,myproc()->count[in-1]);
-}
-}
 
 int
 sys_getpid(void)
 {
-  updateCounter(11);
+ 
   cprintf("returning PID proccess...\n");
   return myproc()->pid;
 }
@@ -31,9 +24,9 @@ sys_getpid(void)
 int
 sys_fork(void)
 {
-  updateCounter(1);
+  
 
-  cprintf("forking proccess...\n");
+  cprintf("forking proccess...\n"); 
   int dadPID = sys_getpid();
   addPID(dadPID);
   cprintf("id dad : %d\n",dadPID);
@@ -50,7 +43,7 @@ sys_fork(void)
 int
 sys_exit(void)
 {
-  updateCounter(2);
+ 
 
   cprintf("exiting proccess...\n");
   exit();
@@ -60,7 +53,7 @@ sys_exit(void)
 int
 sys_wait(void)
 {
-  updateCounter(3);
+  
 
   cprintf("waiting proccess...\n");
   return wait();
@@ -69,7 +62,7 @@ sys_wait(void)
 int
 sys_kill(void)
 {
-  updateCounter(6);
+  
 
   cprintf("killing proccess...\n");
   int pid;
@@ -83,7 +76,7 @@ sys_kill(void)
 int
 sys_sbrk(void)
 {
-  updateCounter(12);
+  
 
   cprintf("sbrk proccess...\n");
   int addr;
@@ -100,7 +93,7 @@ sys_sbrk(void)
 int
 sys_sleep(void)
 {
-  updateCounter(13);
+  
 
   cprintf("sleep proccess...\n");
 
@@ -127,7 +120,7 @@ sys_sleep(void)
 int
 sys_uptime(void)
 {
-  updateCounter(14);
+  
 
   cprintf("uptime proccess...\n");
 
@@ -143,7 +136,7 @@ sys_uptime(void)
 
 int
 sys_getChildren(int temp_pid){
-  updateCounter(22);
+ 
   argint(0, &temp_pid);
   cprintf("getChildren proccess...\n");
 
@@ -153,7 +146,7 @@ return getChildrenPIDs(temp_pid);
 
 int
 sys_getCount(int in){
-  updateCounter(23);
+ 
 
 //  char **a;
 argint(0, &in);
