@@ -88,7 +88,14 @@ allocproc(void)
 found:
   p->state = EMBRYO;
   p->pid = nextpid++;
-  p->priority = 5;//defualt is highest 
+
+  //DanialKm
+
+  p->createTime = ticks;
+  p->readyTime = 0;
+  p->runTime = 0;
+  p->sleepTime = 0;
+  p->priority = 5;//default lowest
 
   release(&ptable.lock);
 
@@ -320,16 +327,25 @@ wait(void)
 //  - swtch to start running that process
 //  - eventually that process transfers control
 //      via swtch back to the scheduler.
+
+
+//DanialKm
 void
 scheduler(void)
 {
   struct proc *p;
+
+  struct proc *p1;
+
   struct cpu *c = mycpu();
   c->proc = 0;
   
   for(;;){
     // Enable interrupts on this processor.
     sti();
+
+    struct proc *highP = NULL;
+
 
     // Loop over process table looking for process to run.
     acquire(&ptable.lock);
@@ -340,6 +356,25 @@ scheduler(void)
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
+    
+
+      highP = p;
+      // choose one with highest priority
+      for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
+        if(p1->state != RUNNABLE)
+          continue;
+        if ( highP->priority > p1->priority )   // larger value, lower priority 
+          highP = p1;
+      }
+
+
+      //DanialKm
+      cprintf("Process %s with pid %d running\n", p->name, p->pid);
+
+
+    //  p = highP;  TODO
+
+
       c->proc = p;
       switchuvm(p);
       p->state = RUNNING;
@@ -532,4 +567,34 @@ procdump(void)
     }
     cprintf("\n");
   }
+}
+
+
+
+
+//DanialKm
+
+
+
+
+
+
+
+
+//change priority
+int
+chpr( int pid, int priority )
+{
+  struct proc *p;
+  
+  acquire(&ptable.lock);
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+    if(p->pid == pid ) {
+        p->priority = priority;
+        break;
+    }
+  }
+  release(&ptable.lock);
+
+  return pid;
 }

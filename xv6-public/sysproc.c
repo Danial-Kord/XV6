@@ -135,6 +135,19 @@ sys_uptime(void)
 
 
 int
+sys_changePriority (void)
+{
+  int pid = sys_getpid(), pr;
+  if(argint(0, &pr) < 0)
+    return -1;
+  // if(argint(1, &pr) < 0)
+  //   return -1;
+  chpr ( pid, pr );
+  return 1;
+}
+
+
+int
 sys_getChildren(int temp_pid){
  
   argint(0, &temp_pid);

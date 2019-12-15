@@ -110,6 +110,7 @@ extern int sys_write(void);
 extern int sys_uptime(void);
 extern int sys_getChildren(void);
 extern int sys_getCount(void);
+extern int sys_changePriority(void);
 // extern int sys_getCount(int);
 
 
@@ -137,6 +138,7 @@ static int (*syscalls[])(void) = {
 [SYS_close]   sys_close,
 [SYS_getChildren]   sys_getChildren,
 [SYS_getCount]   sys_getCount,
+[SYS_changePriority]   sys_changePriority,
 };
 
 

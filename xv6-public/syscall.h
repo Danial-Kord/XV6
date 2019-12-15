@@ -24,3 +24,4 @@
 #define SYS_getChildren  22
 //count
 #define SYS_getCount  23
+#define SYS_changePriority 24
