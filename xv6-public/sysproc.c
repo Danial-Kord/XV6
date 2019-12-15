@@ -16,7 +16,7 @@ extern int MinegetCounter(int);
 void updateCounter(int in){
 if(in <= 23 && in>=1){
   myproc()->count[in-1]++;
-  cprintf("updated data for pid :%d  count sysnumber %d : %d\n",myproc()->pid,in,myproc()->count[in-1]);
+ // cprintf("updated data for pid :%d  count sysnumber %d : %d\n",myproc()->pid,in,myproc()->count[in-1]);
 }
 }
 
@@ -142,12 +142,12 @@ sys_uptime(void)
 
 
 int
-sys_getChildren(){
+sys_getChildren(int temp_pid){
   updateCounter(22);
-
+  argint(0, &temp_pid);
   cprintf("getChildren proccess...\n");
 
-return getChildrenPIDs(sys_getpid());
+return getChildrenPIDs(temp_pid);
 }
 
 

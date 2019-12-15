@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stat.h": "c",
+        "date.h": "c",
+        "defs.h": "c"
+    }
+}

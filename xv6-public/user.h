@@ -23,7 +23,7 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
-int getChildren(void);
+int getChildren(int);
 int getCount(int);
 
 
