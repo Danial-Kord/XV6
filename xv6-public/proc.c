@@ -95,6 +95,7 @@ found:
   p->readyTime = 0;
   p->runTime = 0;
   p->sleepTime = 0;
+  p->calculated_priority = 0;
   p->priority = 5;//default lowest
 
   release(&ptable.lock);
@@ -344,11 +345,13 @@ scheduler(void)
     // Enable interrupts on this processor.
     sti();
 
-    struct proc *highP = NULL;
+    
 
 
+   
     // Loop over process table looking for process to run.
     acquire(&ptable.lock);
+    
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
         continue;
@@ -358,27 +361,32 @@ scheduler(void)
       // before jumping back to us.
     
 
-      highP = p;
-      // choose one with highest priority
+     
+      // DanialKm : choose one with highest priority
+      struct proc *highP;
+       highP = p;
+       //cprintf("Process %s with pid %d and priority : %d running\n", p->name, p->pid,p->calculated_priority);
       for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
         if(p1->state != RUNNABLE)
           continue;
-        if ( highP->priority > p1->priority )   // larger value, lower priority 
+        
+      
+        if ( highP->calculated_priority > p1->calculated_priority )   // larger value, lower priority 
           highP = p1;
       }
+       p = highP; 
+       cprintf("choosen -->: Process %s with pid %d and priority : %d running\n", p->name, p->pid,p->calculated_priority);
+      p->calculated_priority += p->priority;
 
-
-      //DanialKm
-      cprintf("Process %s with pid %d running\n", p->name, p->pid);
-
-
-    //  p = highP;  TODO
-
+      
+     
 
       c->proc = p;
       switchuvm(p);
       p->state = RUNNING;
-
+      
+      
+      
       swtch(&(c->scheduler), p->context);
       switchkvm();
 
@@ -597,4 +605,27 @@ chpr( int pid, int priority )
   release(&ptable.lock);
 
   return pid;
+}
+
+
+//current process status
+int
+cps()
+{
+  struct proc *p;
+  
+
+    // Loop over process table looking for process with pid.
+  acquire(&ptable.lock);
+  cprintf("name \t pid \t state \n");
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      if ( p->state == SLEEPING )
+        cprintf("%s \t %d  \t SLEEPING calculatedPriority : %d\n ", p->name, p->pid ,p->calculated_priority);
+      else if ( p->state == RUNNING )
+        cprintf("%s \t %d  \t RUNNING calculatedPriority : %d\n ", p->name, p->pid ,p->calculated_priority);
+  }
+  
+  release(&ptable.lock);
+  
+  return 22;
 }

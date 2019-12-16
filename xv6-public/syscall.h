@@ -25,3 +25,4 @@
 //count
 #define SYS_getCount  23
 #define SYS_changePriority 24
+#define SYS_currentStatus 25

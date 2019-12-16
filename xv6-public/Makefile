@@ -183,6 +183,7 @@ UPROGS=\
 	_zombie\
 	_getChildrenTest\
 	_getCountTest\
+	_stat\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

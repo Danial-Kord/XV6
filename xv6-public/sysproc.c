@@ -133,6 +133,10 @@ sys_uptime(void)
 }
 
 
+int sys_currentStatus(){
+  return cps();
+}
+
 
 int
 sys_changePriority (void)
