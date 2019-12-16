@@ -15,6 +15,7 @@ struct {
 static struct proc *initproc;
 
 int nextpid = 1;
+int currentPolicy=0;
 extern void forkret(void);
 extern void trapret(void);
 
@@ -95,13 +96,15 @@ found:
   p->readyTime = 0;
   p->runTime = 0;
   p->sleepTime = 0;
+  p->tickcounter = 0;
+  p->calculated_priority = 0;
   
-
+  //DanialKm choosing the min priority
+    if(currentPolicy == 1){//TODO
   struct proc* p1;
   int minPriority=0;;
   p1 = ptable.proc;
   
-
     for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
     if(p1->state != RUNNABLE && p1->state != SLEEPING)
       continue;
@@ -112,15 +115,14 @@ found:
   }
       
   for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
-  if(p1->state != RUNNABLE&& p1->state != SLEEPING) // i choose the min priority among the sleeping or runnable processes... also we it can change to just the runnables
+  if(p1->state != RUNNABLE&& p1->state != SLEEPING) //choosing the min priority among the sleeping or runnable processes...it can change to just check just the runnables
     continue;
   else if(p1->calculated_priority < minPriority && p1->pid != p->pid)
   minPriority = p1->calculated_priority;
   }
   cprintf("choosen priority for new process: %d",minPriority);
   p->calculated_priority = minPriority;
-
-
+    }
   p->priority = 5;//default lowest
 
   release(&ptable.lock);
@@ -361,7 +363,7 @@ scheduler(void)
 {
   struct proc *p;
 
-  struct proc *p1;
+  
 
   struct cpu *c = mycpu();
   c->proc = 0;
@@ -380,7 +382,6 @@ scheduler(void)
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
         continue;
-
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
@@ -388,27 +389,35 @@ scheduler(void)
 
      
       // DanialKm : choose one with highest priority
+      if(currentPolicy == 1){
+      struct proc *p1;
       struct proc *highP;
-       highP = p;
+      highP = p;
        //cprintf("Process %s with pid %d and priority : %d running\n", p->name, p->pid,p->calculated_priority);
       for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
         if(p1->state != RUNNABLE)
           continue;
-        
-      
         if ( highP->calculated_priority > p1->calculated_priority )   // larger value, lower priority 
           highP = p1;
       }
-       p = highP; 
-       //cprintf("choosen -->: Process %s with pid %d and priority : %d running\n", p->name, p->pid,p->calculated_priority);
-      p->calculated_priority += p->priority;
 
+      highP->calculated_priority += highP->priority;
+      p = highP; 
+       //cprintf("choosen -->: Process %s with pid %d and priority : %d running\n", p->name, p->pid,p->calculated_priority);
+      }
       
      
-
+      // if(currentPolicy != 2){
       c->proc = p;
       switchuvm(p);
       p->state = RUNNING;
+      p->tickcounter = 0;
+      // }
+      // else if(p->tickcounter >= QUANTUM){
+      // c->proc = p;
+      // switchuvm(p);
+      // p->state = RUNNING;        
+      // }
       
       
       
@@ -456,9 +465,11 @@ yield(void)
 {
   acquire(&ptable.lock);  //DOC: yieldlock
   myproc()->state = RUNNABLE;
+   myproc()->tickcounter = 0;
   sched();
   release(&ptable.lock);
 }
+
 
 // A fork child's very first scheduling by scheduler()
 // will swtch here.  "Return" to user space.
@@ -632,6 +643,20 @@ chpr( int pid, int priority )
   return pid;
 }
 
+int getPolicy(){
+  return currentPolicy;
+}
+
+//change system polisy
+int
+chsp(int in){
+  if(in >=0 && in <=2){
+    currentPolicy = in;
+    cprintf("changed policy to num%d",in);
+    return 1;
+  }
+  return -1;
+}
 
 //current process status
 int

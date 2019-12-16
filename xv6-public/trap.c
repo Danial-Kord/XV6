@@ -54,12 +54,11 @@ trap(struct trapframe *tf)
   
   switch(tf->trapno){
   case T_IRQ0 + IRQ_TIMER:
-    if(cpuid() == 0 /*&& clocksSpent == QUANTUM*/){
+    if(cpuid() == 0){
       acquire(&tickslock);
       ticks++;
       wakeup(&ticks);
       release(&tickslock);
-      clocksSpent = 0;
     }
     lapiceoi();
     break;
@@ -105,27 +104,35 @@ trap(struct trapframe *tf)
   // (If it is still executing in the kernel, let it keep running
   // until it gets to the regular system call return.)
   if(myproc() && myproc()->killed && (tf->cs&3) == DPL_USER){
-    clocksSpent = QUANTUM;
+    
     exit();
   }
 
   // Force process to give up CPU on clock tick.
   // If interrupts were on while locks held, would need to check nlock.
-  if(myproc() && myproc()->state == RUNNING &&
+
+   if(myproc() && myproc()->state == RUNNING &&
      tf->trapno == T_IRQ0+IRQ_TIMER){
-     clocksSpent++;
-    // cprintf("\npassed....%d is current clocks spened on this PID : %s     pid : %d\n",clocksSpent,myproc()->name,myproc()->pid);
-    //  if(clocksSpent == QUANTUM){
-      clocksSpent = 0;
+     //clocksSpent++;
+     cprintf("\npassed....%d is current clocks spened on this PID : %s     pid : %d\n",myproc()->tickcounter,myproc()->name,myproc()->pid);
+     if(getPolicy() == 2){
+     if(myproc()->tickcounter >= QUANTUM){
+        // myproc()->tickcounter++;
       // cprintf("\n%s changed ...\n",myproc()->name);
         yield();
-    //  }
+     }
+      myproc()->tickcounter++;
+     }
+     else 
+     yield();
 
-  }
+  }//DanialKm
+  else 
+
 
   // Check if the process has been killed since we yielded
   if(myproc() && myproc()->killed && (tf->cs&3) == DPL_USER){
-    clocksSpent = QUANTUM;
+   
     exit();
 
   }

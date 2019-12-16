@@ -26,6 +26,7 @@ int uptime(void);
 int getChildren(int);
 int getCount(int);
 int currentStatus(void);
+int changePolicy(int);
 
 
 // ulib.c

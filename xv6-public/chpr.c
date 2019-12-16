@@ -5,7 +5,6 @@
 int
 main(int argc, char **argv)
 {
-
-changePolicy(2);
+    changePolicy(2);
 exit();
 }

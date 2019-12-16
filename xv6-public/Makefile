@@ -184,6 +184,7 @@ UPROGS=\
 	_getChildrenTest\
 	_getCountTest\
 	_stat\
+	_chpr\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

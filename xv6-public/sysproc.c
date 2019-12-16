@@ -152,6 +152,17 @@ sys_changePriority (void)
 
 
 int
+sys_changePolicy (void)
+{
+  int in;
+  if(argint(0, &in) < 0)
+    return -1;
+
+  return chsp(in);
+}
+
+
+int
 sys_getChildren(int temp_pid){
  
   argint(0, &temp_pid);

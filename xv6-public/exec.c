@@ -101,7 +101,7 @@ exec(char *path, char **argv)
 
   curproc->tf->esp = sp;
   //DanialKm
-  curproc->priority = 5;//Highest
+ // curproc->priority = 5;//lowest
 
   switchuvm(curproc);
   freevm(oldpgdir);
