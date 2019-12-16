@@ -95,7 +95,32 @@ found:
   p->readyTime = 0;
   p->runTime = 0;
   p->sleepTime = 0;
-  p->calculated_priority = 0;
+  
+
+  struct proc* p1;
+  int minPriority=0;;
+  p1 = ptable.proc;
+  
+
+    for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
+    if(p1->state != RUNNABLE && p1->state != SLEEPING)
+      continue;
+    else if(p1->pid != p->pid){
+        minPriority = p1->calculated_priority;
+        break;
+    }
+  }
+      
+  for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
+  if(p1->state != RUNNABLE&& p1->state != SLEEPING) // i choose the min priority among the sleeping or runnable processes... also we it can change to just the runnables
+    continue;
+  else if(p1->calculated_priority < minPriority && p1->pid != p->pid)
+  minPriority = p1->calculated_priority;
+  }
+  cprintf("choosen priority for new process: %d",minPriority);
+  p->calculated_priority = minPriority;
+
+
   p->priority = 5;//default lowest
 
   release(&ptable.lock);
@@ -375,7 +400,7 @@ scheduler(void)
           highP = p1;
       }
        p = highP; 
-       cprintf("choosen -->: Process %s with pid %d and priority : %d running\n", p->name, p->pid,p->calculated_priority);
+       //cprintf("choosen -->: Process %s with pid %d and priority : %d running\n", p->name, p->pid,p->calculated_priority);
       p->calculated_priority += p->priority;
 
       
