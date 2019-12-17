@@ -1,3 +1,5 @@
+
+#include "syscall.h"
 // Per-CPU state
 struct cpu {
   uchar apicid;                // Local APIC ID
@@ -31,6 +33,15 @@ struct context {
   uint ebp;
   uint eip;
 };
+struct timeVariables
+{
+  uint creationTime;             // process creation time
+  uint terminationTime;         // process terminate time
+  uint zombieTime;              //process zombie state time
+  int  sleepingTime;              // process sleeping time
+  int  readyTime;              // process ready (RUNNABLE) time
+  int  runningTime;                // process running time
+};
 
 enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
@@ -50,11 +61,8 @@ struct proc {
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
   //DanialKm
-  int count[23];
-  uint createTime;             // process creation time
-  int  sleepTime;              // process sleeping time
-  int  readyTime;              // process ready (RUNNABLE) time
-  int  runTime;                // process running time
+  int count[syscallsNum];
+  struct timeVariables *timeVariables; 
   int priority;                // process priority
   int calculated_priority;
   int tickcounter;

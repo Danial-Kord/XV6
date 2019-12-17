@@ -92,10 +92,10 @@ found:
 
   //DanialKm
 
-  p->createTime = ticks;
-  p->readyTime = 0;
-  p->runTime = 0;
-  p->sleepTime = 0;
+  p->timeVariables->creationTime = ticks;
+  p->timeVariables->readyTime = 0;
+  p->timeVariables->runningTime = 0;
+  p->timeVariables->sleepingTime = 0;
   p->tickcounter = 0;
   p->calculated_priority = 0;
   
@@ -465,7 +465,8 @@ yield(void)
 {
   acquire(&ptable.lock);  //DOC: yieldlock
   myproc()->state = RUNNABLE;
-   myproc()->tickcounter = 0;
+  //DanialKm
+  myproc()->tickcounter = 0;
   sched();
   release(&ptable.lock);
 }
@@ -643,6 +644,7 @@ chpr( int pid, int priority )
   return pid;
 }
 
+
 int getPolicy(){
   return currentPolicy;
 }
@@ -678,4 +680,26 @@ cps()
   release(&ptable.lock);
   
   return 22;
+}
+
+void
+updateTableTiming(){
+    struct proc *p;
+    // Loop over process table looking for process with pid.
+  acquire(&ptable.lock);
+  cprintf("name \t pid \t state \n");
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      if ( p->state == SLEEPING )
+        p->timeVariables->sleepingTime++;
+      else if ( p->state == RUNNABLE)
+        p->timeVariables->readyTime++;
+      else if(p->state == ZOMBIE)//TODO
+      {
+        
+      }
+      
+        
+  }
+  
+  release(&ptable.lock);
 }

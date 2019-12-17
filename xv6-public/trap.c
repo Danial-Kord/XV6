@@ -40,13 +40,13 @@ trap(struct trapframe *tf)
 {
   if(tf->trapno == T_SYSCALL){
     if(myproc()->killed){
-      clocksSpent = 10;
+      
       exit();
     }
     myproc()->tf = tf;
     syscall();
     if(myproc()->killed){
-      clocksSpent = QUANTUM;
+      
       exit();
     }
     return;
@@ -113,11 +113,10 @@ trap(struct trapframe *tf)
 
    if(myproc() && myproc()->state == RUNNING &&
      tf->trapno == T_IRQ0+IRQ_TIMER){
-     //clocksSpent++;
+     myproc()->timeVariables->runningTime++;
      cprintf("\npassed....%d is current clocks spened on this PID : %s     pid : %d\n",myproc()->tickcounter,myproc()->name,myproc()->pid);
      if(getPolicy() == 2){
      if(myproc()->tickcounter >= QUANTUM){
-        // myproc()->tickcounter++;
       // cprintf("\n%s changed ...\n",myproc()->name);
         yield();
      }
@@ -127,13 +126,13 @@ trap(struct trapframe *tf)
      yield();
 
   }//DanialKm
-  else 
-
-
+ 
   // Check if the process has been killed since we yielded
   if(myproc() && myproc()->killed && (tf->cs&3) == DPL_USER){
    
     exit();
 
   }
+  //DanialKm
+  updateTableTiming();
 }

@@ -124,6 +124,8 @@ int             chpr(int,int);
 int             cps(void);
 int             chsp(int);
 int             getPolicy(void);
+void             updateTableTiming(void);
+
 // swtch.S
 void            swtch(struct context**, struct context*);
 
