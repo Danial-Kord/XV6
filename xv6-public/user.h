@@ -38,6 +38,7 @@ int getCount(int);
 int currentStatus(void);
 int changePolicy(int);
 int waitForChild(struct TimeVariables *t);
+int changePriority(int,int);
 
 
 // ulib.c

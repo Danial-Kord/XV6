@@ -9,21 +9,21 @@
 int
 main(int argc, char **argv)
 {
-struct TimeVariables t[10] ;
+struct TimeVariables t[25] ;
 
 int turnAroundTimeAvg = 0;
 int WaitingTimeAvg = 0;
 uint cbtAvg = 0;
 
 
-for (int id=0; id<10; id++) {
+for (int id=0; id<25; id++) {
     int f = fork();
     if (f == 0) {
         int pid = getpid();
         
         for (int i = 0; i < 1000; i++)
         {
-            printf(1,"%d   [%d]: [%d]\n",id,pid,i);
+            printf(1,"[%d]: [%d]\n",id,id,i);
         }
       
         exit();
@@ -35,7 +35,7 @@ for (int id=0; id<10; id++) {
     }
 }
     printf(1,"creationTime:\t terminationTime:\t sleepiing:\treadytime:\t\n");
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 25; i++)
     {
          printf(1,"\n\nProcess : %d \n->>>>>>>>>>>>>>>>>\ncreationTime : %d\nterminationTime : %d\nsleepiing : %d\nreadytime :%d\n\n"
          ,i,t[i].creationTime,t[i].terminationTime,t[i].sleepingTime,t[i].readyTime);

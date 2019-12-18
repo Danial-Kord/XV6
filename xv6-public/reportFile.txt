@@ -1,0 +1,159 @@
+3.5.1
+
+Process : 0 
+->>>>>>>>>>>>>>>>>
+creationTime : 741
+terminationTime : 1713
+sleepiing : 0
+readytime :0
+
+____________________________________
+TurnAroundTime : 972
+WaitingTime : 0
+CBT : 972
+__________________________
+<----------------------------
+
+
+Process : 1 
+->>>>>>>>>>>>>>>>>
+creationTime : 1714
+terminationTime : 2504
+sleepiing : 0
+readytime :203
+
+____________________________________
+TurnAroundTime : 790
+WaitingTime : 203
+CBT : 587
+__________________________
+<----------------------------
+
+
+Process : 2 
+->>>>>>>>>>>>>>>>>
+creationTime : 2507
+terminationTime : 3276
+sleepiing : 0
+readytime :211
+
+____________________________________
+TurnAroundTime : 769
+WaitingTime : 211
+CBT : 558
+__________________________
+<----------------------------
+
+
+Process : 3 
+->>>>>>>>>>>>>>>>>
+creationTime : 3278
+terminationTime : 4067
+sleepiing : 0
+readytime :205
+
+____________________________________
+TurnAroundTime : 789
+WaitingTime : 205
+CBT : 584
+__________________________
+<----------------------------
+
+
+Process : 4 
+->>>>>>>>>>>>>>>>>
+creationTime : 4069
+terminationTime : 4838
+sleepiing : 0
+readytime :205
+
+____________________________________
+TurnAroundTime : 769
+WaitingTime : 205
+CBT : 564
+__________________________
+<----------------------------
+
+
+Process : 5 
+->>>>>>>>>>>>>>>>>
+creationTime : 4841
+terminationTime : 5818
+sleepiing : 0
+readytime :0
+
+____________________________________
+TurnAroundTime : 977
+WaitingTime : 0
+CBT : 977
+__________________________
+<----------------------------
+
+
+Process : 6 
+->>>>>>>>>>>>>>>>>
+creationTime : 5818
+terminationTime : 6651
+sleepiing : 0
+readytime :224
+
+____________________________________
+TurnAroundTime : 833
+WaitingTime : 224
+CBT : 609
+__________________________
+<----------------------------
+
+
+Process : 7 
+->>>>>>>>>>>>>>>>>
+creationTime : 6651
+terminationTime : 7431
+sleepiing : 0
+readytime :186
+
+____________________________________
+TurnAroundTime : 780
+WaitingTime : 186
+CBT : 594
+__________________________
+<----------------------------
+
+
+Process : 8 
+->>>>>>>>>>>>>>>>>
+creationTime : 7433
+terminationTime : 8280
+sleepiing : 0
+readytime :230
+
+____________________________________
+TurnAroundTime : 847
+WaitingTime : 230
+CBT : 617
+__________________________
+<----------------------------
+
+
+Process : 9 
+->>>>>>>>>>>>>>>>>
+creationTime : 8282
+terminationTime : 9286
+sleepiing : 0
+readytime :0
+
+           RESULTS :    ____________________________________
+                        TurnAroundTime : 1004
+                        WaitingTime : 0
+                        CBT : 1004
+                        __________________________
+                        <----------------------------
+                        -_-_-_-_-_-_-_-_-
+                        TurnAroundTimeAvg : 853
+                        WaitingTimeAvg : 146
+                        CBTAvg : 706
+                        -_-_-_-_-_-_-_-_-
+___________________________________________________________________________________________________________________________________________________________________
+
+
+3.5.2
