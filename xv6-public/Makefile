@@ -185,6 +185,7 @@ UPROGS=\
 	_getCountTest\
 	_stat\
 	_chpr\
+	_OriginalSchedTest\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

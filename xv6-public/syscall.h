@@ -27,4 +27,6 @@
 #define SYS_changePriority 24
 #define SYS_currentStatus 25
 #define SYS_changePolicy 26
-#define syscallsNum     26
+#define SYS_waitForChild    27
+
+#define syscallsNum     27

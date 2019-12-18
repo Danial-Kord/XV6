@@ -14,8 +14,6 @@ extern uint vectors[];  // in vectors.S: array of 256 entry pointers
 struct spinlock tickslock;
 uint ticks;
 
-int clocksSpent=0;
-
 void
 tvinit(void)
 {
@@ -57,6 +55,7 @@ trap(struct trapframe *tf)
     if(cpuid() == 0){
       acquire(&tickslock);
       ticks++;
+      updateTableTiming();
       wakeup(&ticks);
       release(&tickslock);
     }
@@ -113,8 +112,8 @@ trap(struct trapframe *tf)
 
    if(myproc() && myproc()->state == RUNNING &&
      tf->trapno == T_IRQ0+IRQ_TIMER){
-     myproc()->timeVariables->runningTime++;
-     cprintf("\npassed....%d is current clocks spened on this PID : %s     pid : %d\n",myproc()->tickcounter,myproc()->name,myproc()->pid);
+        myproc()->timeVariables.runningTime++;
+    // cprintf("\npassed....%d is current clocks spened on this PID : %s     pid : %d\n",myproc()->tickcounter,myproc()->name,myproc()->pid);
      if(getPolicy() == 2){
      if(myproc()->tickcounter >= QUANTUM){
       // cprintf("\n%s changed ...\n",myproc()->name);
@@ -134,5 +133,5 @@ trap(struct trapframe *tf)
 
   }
   //DanialKm
-  updateTableTiming();
+  
 }

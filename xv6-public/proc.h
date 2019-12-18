@@ -33,7 +33,7 @@ struct context {
   uint ebp;
   uint eip;
 };
-struct timeVariables
+struct TimeVariables
 {
   uint creationTime;             // process creation time
   uint terminationTime;         // process terminate time
@@ -62,7 +62,7 @@ struct proc {
   char name[16];               // Process name (debugging)
   //DanialKm
   int count[syscallsNum];
-  struct timeVariables *timeVariables; 
+  struct TimeVariables timeVariables; 
   int priority;                // process priority
   int calculated_priority;
   int tickcounter;

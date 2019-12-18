@@ -1,5 +1,15 @@
 struct stat;
 struct rtcdate;
+struct TimeVariables
+{
+  uint creationTime;             // process creation time
+  uint terminationTime;         // process terminate time
+  uint zombieTime;              //process zombie state time
+  int  sleepingTime;              // process sleeping time
+  int  readyTime;              // process ready (RUNNABLE) time
+  int  runningTime;                // process running time
+};
+
 
 // system calls
 int fork(void);
@@ -27,6 +37,7 @@ int getChildren(int);
 int getCount(int);
 int currentStatus(void);
 int changePolicy(int);
+int waitForChild(struct TimeVariables *t);
 
 
 // ulib.c

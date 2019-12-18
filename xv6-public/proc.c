@@ -91,11 +91,12 @@ found:
   p->pid = nextpid++;
 
   //DanialKm
-
-  p->timeVariables->creationTime = ticks;
-  p->timeVariables->readyTime = 0;
-  p->timeVariables->runningTime = 0;
-  p->timeVariables->sleepingTime = 0;
+  
+  
+  p->timeVariables.creationTime = ticks;
+  p->timeVariables.readyTime = 0;
+  p->timeVariables.runningTime = 0;
+  p->timeVariables.sleepingTime = 0;
   p->tickcounter = 0;
   p->calculated_priority = 0;
   
@@ -299,6 +300,8 @@ exit(void)
 
   // Jump into the scheduler, never to return.
   curproc->state = ZOMBIE;
+  //TODO
+  curproc->timeVariables.terminationTime = ticks;
   sched();
   panic("zombie exit");
 }
@@ -331,6 +334,9 @@ wait(void)
         p->name[0] = 0;
         p->killed = 0;
         p->state = UNUSED;
+        //DanialKm
+        p->timeVariables.terminationTime = ticks;
+        
         release(&ptable.lock);
         return pid;
       }
@@ -346,6 +352,57 @@ wait(void)
     sleep(curproc, &ptable.lock);  //DOC: wait-sleep
   }
 }
+
+
+//DanialKm
+int
+waitForChild(struct TimeVariables *timeVariables)
+{
+  struct proc *p;
+  int havekids, pid;
+  struct proc *curproc = myproc();
+  
+  acquire(&ptable.lock);
+  for(;;){
+    // Scan through table looking for exited children.
+    havekids = 0;
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      if(p->parent != curproc)
+        continue;
+      havekids = 1;
+      if(p->state == ZOMBIE){
+        // Found one.
+        pid = p->pid;
+        kfree(p->kstack);
+        p->kstack = 0;
+        freevm(p->pgdir);
+        p->pid = 0;
+        p->parent = 0;
+        p->name[0] = 0;
+        p->killed = 0;
+        p->state = UNUSED;
+        //DanialKm
+        //  timeVariables->readyTime = p->timeVariables.readyTime;
+        //  timeVariables->creationTime = p->timeVariables.creationTime;
+        //  timeVariables->sleepingTime = p->timeVariables.sleepingTime;
+        //  timeVariables->terminationTime = p->timeVariables.terminationTime;
+        *timeVariables = p->timeVariables;
+        release(&ptable.lock);
+        return pid;
+      }
+    }
+
+    // No point waiting if we don't have any children.
+    if(!havekids || curproc->killed){
+      release(&ptable.lock);
+      return -1;
+    }
+
+    // Wait for children to exit.  (See wakeup1 call in proc_exit.)
+    sleep(curproc, &ptable.lock);  //DOC: wait-sleep
+  }
+}
+
 
 //PAGEBREAK: 42
 // Per-CPU process scheduler.
@@ -380,8 +437,10 @@ scheduler(void)
     acquire(&ptable.lock);
     
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-      if(p->state != RUNNABLE)
+      
+      if(p->state != RUNNABLE){
         continue;
+      }
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
@@ -410,8 +469,9 @@ scheduler(void)
       // if(currentPolicy != 2){
       c->proc = p;
       switchuvm(p);
+      
       p->state = RUNNING;
-      p->tickcounter = 0;
+      //p->tickcounter = 0;
       // }
       // else if(p->tickcounter >= QUANTUM){
       // c->proc = p;
@@ -669,12 +729,14 @@ cps()
 
     // Loop over process table looking for process with pid.
   acquire(&ptable.lock);
-  cprintf("name \t pid \t state \n");
+  cprintf("name \t pid \t state \t calculatedPriority \t creationTime \n");
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if ( p->state == SLEEPING )
-        cprintf("%s \t %d  \t SLEEPING calculatedPriority : %d\n ", p->name, p->pid ,p->calculated_priority);
+        cprintf("%s \t %d  \t SLEEPING \t%d t%d\n ", p->name, p->pid ,p->calculated_priority,p->timeVariables.creationTime);
       else if ( p->state == RUNNING )
-        cprintf("%s \t %d  \t RUNNING calculatedPriority : %d\n ", p->name, p->pid ,p->calculated_priority);
+        cprintf("%s \t %d  \t RUNNING \t%d t%d\n ", p->name, p->pid ,p->calculated_priority,p->timeVariables.creationTime);
+        else if( p->state == RUNNABLE )
+        cprintf("%s \t %d  \t RUNNING \t%d t%d\n ", p->name, p->pid ,p->calculated_priority,p->timeVariables.creationTime);
   }
   
   release(&ptable.lock);
@@ -684,19 +746,18 @@ cps()
 
 void
 updateTableTiming(){
+    
+
+    
     struct proc *p;
     // Loop over process table looking for process with pid.
   acquire(&ptable.lock);
-  cprintf("name \t pid \t state \n");
+  //cprintf("name \t pid \t state \n");
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if ( p->state == SLEEPING )
-        p->timeVariables->sleepingTime++;
+        p->timeVariables.sleepingTime++;
       else if ( p->state == RUNNABLE)
-        p->timeVariables->readyTime++;
-      else if(p->state == ZOMBIE)//TODO
-      {
-        
-      }
+        p->timeVariables.readyTime++;
       
         
   }

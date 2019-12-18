@@ -58,7 +58,15 @@ sys_wait(void)
   cprintf("waiting proccess...\n");
   return wait();
 }
+int
+sys_waitForChild(void){
 
+    struct TimeVariables *timeVariables;
+    if(argptr (0 , (void*)&timeVariables ,sizeof(*timeVariables)) < 0)
+        return -1;
+  cprintf("%d",timeVariables->readyTime);
+  return waitForChild(timeVariables);
+}
 int
 sys_kill(void)
 {
