@@ -335,8 +335,8 @@ wait(void)
         p->killed = 0;
         p->state = UNUSED;
         //DanialKm
-        p->timeVariables.terminationTime = ticks;
-        
+       // p->timeVariables.terminationTime = ticks;
+        cprintf(":)\n");
         release(&ptable.lock);
         return pid;
       }
@@ -345,6 +345,7 @@ wait(void)
     // No point waiting if we don't have any children.
     if(!havekids || curproc->killed){
       release(&ptable.lock);
+       cprintf(":(((((((((\n");
       return -1;
     }
 
@@ -386,6 +387,7 @@ waitForChild(struct TimeVariables *timeVariables)
         //  timeVariables->creationTime = p->timeVariables.creationTime;
         //  timeVariables->sleepingTime = p->timeVariables.sleepingTime;
         //  timeVariables->terminationTime = p->timeVariables.terminationTime;
+        cprintf("wtffffffffff\n");
         *timeVariables = p->timeVariables;
         release(&ptable.lock);
         return pid;
@@ -394,6 +396,7 @@ waitForChild(struct TimeVariables *timeVariables)
 
     // No point waiting if we don't have any children.
     if(!havekids || curproc->killed){
+      cprintf(":(((((((((\n");
       release(&ptable.lock);
       return -1;
     }
