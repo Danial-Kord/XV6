@@ -703,7 +703,7 @@ chpr( int pid, int priority )
     }
   }
   release(&ptable.lock);
-
+   cprintf("changed priority of %d to : %d\n",pid,priority);
   return pid;
 }
 

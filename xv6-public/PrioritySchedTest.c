@@ -15,15 +15,15 @@ int turnAroundTimeAvg = 0;
 int WaitingTimeAvg = 0;
 uint cbtAvg = 0;
 
-
+changePolicy(2);
 for (int id=0; id<25; id++) {
     int f = fork();
     if (f == 0) {
         int pid = getpid();
-        
-        for (int i = 0; i < 1000; i++)
+        changePriority(pid,5-id/5);
+        for (int i = 0; i < 500; i++)
         {
-            printf(1,"[%d]: [%d]\n",id,id,i);
+            printf(1,"[%d]: [%d]\n",id,i);
         }
       
         exit();
@@ -37,8 +37,8 @@ for (int id=0; id<25; id++) {
     printf(1,"creationTime:\t terminationTime:\t sleepiing:\treadytime:\t\n");
     for (int i = 0; i < 25; i++)
     {
-         printf(1,"\n\nProcess : %d \n->>>>>>>>>>>>>>>>>\ncreationTime : %d\nterminationTime : %d\nsleepiing : %d\nreadytime :%d\n\n"
-         ,i,t[i].creationTime,t[i].terminationTime,t[i].sleepingTime,t[i].readyTime);
+         printf(1,"\n\nProcess : %d \n->>>>>>>>>>>>>>>>>\npriority : %d\ncreationTime : %d\nterminationTime : %d\nsleepiing : %d\nreadytime :%d\n\n"
+         ,i,5-i/5,t[i].creationTime,t[i].terminationTime,t[i].sleepingTime,t[i].readyTime);
          int turnAroundTime = t[i].terminationTime - t[i].creationTime;
          int WaitingTime = t[i].readyTime;
          int cbt = turnAroundTime - WaitingTime - t[i].sleepingTime;

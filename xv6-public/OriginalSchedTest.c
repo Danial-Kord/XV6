@@ -15,7 +15,7 @@ int turnAroundTimeAvg = 0;
 int WaitingTimeAvg = 0;
 uint cbtAvg = 0;
 
-
+changePolicy(1);
 for (int id=0; id<10; id++) {
     int f = fork();
     if (f == 0) {

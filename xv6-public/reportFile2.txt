@@ -1,0 +1,403 @@
+Process : 0 
+->>>>>>>>>>>>>>>>>
+priority : 5
+creationTime : 392
+terminationTime : 826
+sleepiing : 0
+readytime :0
+
+____________________________________
+TurnAroundTime : 434
+WaitingTime : 0
+CBT : 434
+__________________________
+<----------------------------
+
+
+Process : 1 
+->>>>>>>>>>>>>>>>>
+priority : 5
+creationTime : 828
+terminationTime : 1255
+sleepiing : 0
+readytime :0
+
+____________________________________
+TurnAroundTime : 427
+WaitingTime : 0
+CBT : 427
+__________________________
+<----------------------------
+
+
+Process : 2 
+->>>>>>>>>>>>>>>>>
+priority : 5
+creationTime : 1260
+terminationTime : 1642
+sleepiing : 0
+readytime :0
+
+____________________________________
+TurnAroundTime : 382
+WaitingTime : 0
+CBT : 382
+__________________________
+<----------------------------
+
+
+Process : 3 
+->>>>>>>>>>>>>>>>>
+priority : 5
+creationTime : 1644
+terminationTime : 2062
+sleepiing : 0
+readytime :0
+
+____________________________________
+TurnAroundTime : 418
+WaitingTime : 0
+CBT : 418
+__________________________
+<----------------------------
+
+
+Process : 4 
+->>>>>>>>>>>>>>>>>
+priority : 5
+creationTime : 2064
+terminationTime : 2449
+sleepiing : 0
+readytime :0
+
+____________________________________
+TurnAroundTime : 385
+WaitingTime : 0
+CBT : 385
+__________________________
+<----------------------------
+
+
+Process : 5 
+->>>>>>>>>>>>>>>>>
+priority : 4
+creationTime : 2451
+terminationTime : 2773
+sleepiing : 0
+readytime :7
+
+____________________________________
+TurnAroundTime : 322
+WaitingTime : 7
+CBT : 315
+__________________________
+<----------------------------
+
+
+Process : 6 
+->>>>>>>>>>>>>>>>>
+priority : 4
+creationTime : 2775
+terminationTime : 3083
+sleepiing : 0
+readytime :9
+
+____________________________________
+TurnAroundTime : 308
+WaitingTime : 9
+CBT : 299
+__________________________
+<----------------------------
+
+
+Process : 7 
+->>>>>>>>>>>>>>>>>
+priority : 4
+creationTime : 3085
+terminationTime : 3422
+sleepiing : 0
+readytime :8
+
+____________________________________
+TurnAroundTime : 337
+WaitingTime : 8
+CBT : 329
+__________________________
+<----------------------------
+
+
+Process : 8 
+->>>>>>>>>>>>>>>>>
+priority : 4
+creationTime : 3423
+terminationTime : 3858
+sleepiing : 0
+readytime :0
+
+____________________________________
+TurnAroundTime : 435
+WaitingTime : 0
+CBT : 435
+__________________________
+<----------------------------
+
+
+Process : 9 
+->>>>>>>>>>>>>>>>>
+priority : 4
+creationTime : 3859
+terminationTime : 4214
+sleepiing : 0
+readytime :9
+
+____________________________________
+TurnAroundTime : 355
+WaitingTime : 9
+CBT : 346
+__________________________
+<----------------------------
+
+
+Process : 10 
+->>>>>>>>>>>>>>>>>
+priority : 3
+creationTime : 4214
+terminationTime : 4552
+sleepiing : 0
+readytime :7
+
+____________________________________
+TurnAroundTime : 338
+WaitingTime : 7
+CBT : 331
+__________________________
+<----------------------------
+
+
+Process : 11 
+->>>>>>>>>>>>>>>>>
+priority : 3
+creationTime : 4552
+terminationTime : 4954
+sleepiing : 0
+readytime :10
+
+____________________________________
+TurnAroundTime : 402
+WaitingTime : 10
+CBT : 392
+__________________________
+<----------------------------
+
+
+Process : 12 
+->>>>>>>>>>>>>>>>>
+priority : 3
+creationTime : 4955
+terminationTime : 5357
+sleepiing : 0
+readytime :7
+
+____________________________________
+TurnAroundTime : 402
+WaitingTime : 7
+CBT : 395
+__________________________
+<----------------------------
+
+
+Process : 13 
+->>>>>>>>>>>>>>>>>
+priority : 3
+creationTime : 5360
+terminationTime : 5730
+sleepiing : 0
+readytime :12
+
+____________________________________
+TurnAroundTime : 370
+WaitingTime : 12
+CBT : 358
+__________________________
+<----------------------------
+
+
+Process : 14 
+->>>>>>>>>>>>>>>>>
+priority : 3
+creationTime : 5731
+terminationTime : 6054
+sleepiing : 0
+readytime :12
+
+____________________________________
+TurnAroundTime : 323
+WaitingTime : 12
+CBT : 311
+__________________________
+<----------------------------
+
+
+Process : 15 
+->>>>>>>>>>>>>>>>>
+priority : 2
+creationTime : 6055
+terminationTime : 6412
+sleepiing : 0
+readytime :9
+
+____________________________________
+TurnAroundTime : 357
+WaitingTime : 9
+CBT : 348
+__________________________
+<----------------------------
+
+
+Process : 16 
+->>>>>>>>>>>>>>>>>
+priority : 2
+creationTime : 6413
+terminationTime : 6809
+sleepiing : 0
+readytime :0
+
+____________________________________
+TurnAroundTime : 396
+WaitingTime : 0
+CBT : 396
+__________________________
+<----------------------------
+
+
+Process : 17 
+->>>>>>>>>>>>>>>>>
+priority : 2
+creationTime : 6811
+terminationTime : 7310
+sleepiing : 0
+readytime :0
+
+____________________________________
+TurnAroundTime : 499
+WaitingTime : 0
+CBT : 499
+__________________________
+<----------------------------
+
+
+Process : 18 
+->>>>>>>>>>>>>>>>>
+priority : 2
+creationTime : 7312
+terminationTime : 7715
+sleepiing : 0
+readytime :0
+
+____________________________________
+TurnAroundTime : 403
+WaitingTime : 0
+CBT : 403
+__________________________
+<----------------------------
+
+
+Process : 19 
+->>>>>>>>>>>>>>>>>
+priority : 2
+creationTime : 7721
+terminationTime : 8070
+sleepiing : 0
+readytime :11
+
+____________________________________
+TurnAroundTime : 349
+WaitingTime : 11
+CBT : 338
+__________________________
+<----------------------------
+
+
+Process : 20 
+->>>>>>>>>>>>>>>>>
+priority : 1
+creationTime : 8073
+terminationTime : 8472
+sleepiing : 0
+readytime :0
+
+____________________________________
+TurnAroundTime : 399
+WaitingTime : 0
+CBT : 399
+__________________________
+<----------------------------
+
+
+Process : 21 
+->>>>>>>>>>>>>>>>>
+priority : 1
+creationTime : 8472
+terminationTime : 8830
+sleepiing : 0
+readytime :9
+
+____________________________________
+TurnAroundTime : 358
+WaitingTime : 9
+CBT : 349
+__________________________
+<----------------------------
+
+
+Process : 22 
+->>>>>>>>>>>>>>>>>
+priority : 1
+creationTime : 8832
+terminationTime : 9168
+sleepiing : 0
+readytime :10
+
+____________________________________
+TurnAroundTime : 336
+WaitingTime : 10
+CBT : 326
+__________________________
+<----------------------------
+
+
+Process : 23 
+->>>>>>>>>>>>>>>>>
+priority : 1
+creationTime : 9169
+terminationTime : 9514
+sleepiing : 0
+readytime :8
+
+____________________________________
+TurnAroundTime : 345
+WaitingTime : 8
+CBT : 337
+__________________________
+<----------------------------
+
+
+Process : 24 
+->>>>>>>>>>>>>>>>>
+priority : 1
+creationTime : 9517
+terminationTime : 9842
+sleepiing : 0
+readytime :8
+
+____________________________________
+TurnAroundTime : 325
+WaitingTime : 8
+CBT : 317
+__________________________
+<----------------------------
+-_-_-_-_-_-_-_-_-
+TurnAroundTimeAvg : 940
+WaitingTimeAvg : 13
+CBTAvg : 926
+-_-_-_-_-_-_-_-_-
