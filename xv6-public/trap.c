@@ -112,11 +112,11 @@ trap(struct trapframe *tf)
 
    if(myproc() && myproc()->state == RUNNING &&
      tf->trapno == T_IRQ0+IRQ_TIMER){
-        myproc()->timeVariables.runningTime++;
-    // cprintf("\npassed....%d is current clocks spened on this PID : %s     pid : %d\n",myproc()->tickcounter,myproc()->name,myproc()->pid);
+        //myproc()->timeVariables.runningTime++;
+     //cprintf("\npassed....%d is current clocks spened on this PID : %s     pid : %d\n",myproc()->tickcounter,myproc()->name,myproc()->pid);
      if(getPolicy() == 2){
      if(myproc()->tickcounter >= QUANTUM){
-      // cprintf("\n%s changed ...\n",myproc()->name);
+       cprintf("\n%s changed ...%d\n",myproc()->name,myproc()->tickcounter);
         yield();
      }
       myproc()->tickcounter++;

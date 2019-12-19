@@ -101,7 +101,7 @@ found:
   p->calculated_priority = 0;
   
   //DanialKm choosing the min priority
-    if(currentPolicy == 1){//TODO
+  //TODO
   struct proc* p1;
   int minPriority=0;;
   p1 = ptable.proc;
@@ -123,7 +123,7 @@ found:
   }
   cprintf("choosen priority for new process: %d",minPriority);
   p->calculated_priority = minPriority;
-    }
+   
   p->priority = 5;//default lowest
 
   release(&ptable.lock);
@@ -462,7 +462,7 @@ scheduler(void)
         if ( highP->calculated_priority > p1->calculated_priority )   // larger value, lower priority 
           highP = p1;
       }
-
+    
       highP->calculated_priority += highP->priority;
       p = highP; 
        //cprintf("choosen -->: Process %s with pid %d and priority : %d running\n", p->name, p->pid,p->calculated_priority);
@@ -761,6 +761,8 @@ updateTableTiming(){
         p->timeVariables.sleepingTime++;
       else if ( p->state == RUNNABLE)
         p->timeVariables.readyTime++;
+      else if ( p->state == RUNNING)
+        p->timeVariables.runningTime++;
       
         
   }

@@ -15,9 +15,9 @@ int turnAroundTimeAvg = 0;
 int WaitingTimeAvg = 0;
 uint cbtAvg = 0;
 
-changePolicy(1);
+changePolicy(2);
 for (int id=0; id<10; id++) {
-    int f = fork();
+    int f = fork();     
     if (f == 0) {
         int pid = getpid();
         
@@ -29,19 +29,26 @@ for (int id=0; id<10; id++) {
         exit();
     }
     else if(f > 0){
-      printf(1,"%d",waitForChild(&t[id]));
+    //   printf(1,"%d",waitForChild(&t[id]));
  // printf(1,"creationTime : %d\nterminationTime : %d\nsleepiing : %d\nreadytime :%d\n",t[id].creationTime,t[id].terminationTime,t[id].sleepingTime,t[id].readyTime);
  
     }
 }
+
+    for(int i=0;i<25;i++){
+
+        printf(1,"%d",waitForChild(&t[i]));
+    }
+
+
     printf(1,"creationTime:\t terminationTime:\t sleepiing:\treadytime:\t\n");
     for (int i = 0; i < 10; i++)
     {
-         printf(1,"\n\nProcess : %d \n->>>>>>>>>>>>>>>>>\ncreationTime : %d\nterminationTime : %d\nsleepiing : %d\nreadytime :%d\n\n"
-         ,i,t[i].creationTime,t[i].terminationTime,t[i].sleepingTime,t[i].readyTime);
+         printf(1,"\n\nProcess : %d \n->>>>>>>>>>>>>>>>>\ncreationTime : %d\nterminationTime : %d\nsleepiing : %d\nreadytime :%d\nrunningTime :%d\n\n"
+         ,i,t[i].creationTime,t[i].terminationTime,t[i].sleepingTime,t[i].readyTime,t[i].runningTime);
          int turnAroundTime = t[i].terminationTime - t[i].creationTime;
          int WaitingTime = t[i].readyTime;
-         int cbt = turnAroundTime - WaitingTime - t[i].sleepingTime;
+         int cbt = t[i].runningTime;
          turnAroundTimeAvg+=turnAroundTime;
          cbtAvg += cbt;
          WaitingTimeAvg += WaitingTime;
@@ -51,7 +58,7 @@ for (int id=0; id<10; id++) {
     turnAroundTimeAvg/=10.0;
     cbtAvg /= 10.0;
     WaitingTimeAvg /= 10.0;
-    printf(1,"-_-_-_-_-_-_-_-_-\nTurnAroundTimeAvg : %d\nWaitingTimeAvg : %d\nCBTAvg : %d\n-_-_-_-_-_-_-_-_-\n"
+    printf(1,"-_-_-_-_-_-_-_-_-\nTT : %d\nWT : %d\nCBT : %d\n-_-_-_-_-_-_-_-_-\n"
 ,turnAroundTimeAvg,WaitingTimeAvg,cbtAvg);
 
 
