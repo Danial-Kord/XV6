@@ -42,9 +42,8 @@ uint cbtAvg = 0;
     for ( id=0; id<25; id++){
      pids[id] = waitForChild(&t[id]);
     }
- // printf(1,"creationTime : %d\nterminationTime : %d\nsleepiing : %d\nreadytime :%d\n",t[id].creationTime,t[id].terminationTime,t[id].sleepingTime,t[id].readyTime);
- 
-    struct TimeVariables tf[25] ;
+ // print(1,"creationTime : %d\nterminationTime : %d\nsleepiing : %d\nreadytime :%d\n",t[id].creationTime,t[id].terminationTime,t[id].sleepingTime,t[id].readyTime);
+
     for(int i=0;i<25;i++){
         int index = i;
         int min = pids[i];
@@ -55,7 +54,13 @@ uint cbtAvg = 0;
                 index = j;
             }
         }
-        tf[i] = t[index];
+         struct TimeVariables temp;
+        temp = t[i];
+        t[i] = t[index];
+        t[index] = temp;
+        int tt =pids[i];
+        pids[i] = pids[index];
+        pids[index] = tt;
     }
 
 
@@ -63,10 +68,10 @@ uint cbtAvg = 0;
     for (int i = 0; i < 25; i++)
     {
          printf(1,"\n\nProcess : %d \n->>>>>>>>>>>>>>>>>\npid : %d\ncreationTime : %d\nterminationTime : %d\nsleepiing : %d\nreadytime :%d\n\n"
-         ,i,pids[i],tf[i].creationTime,tf[i].terminationTime,tf[i].sleepingTime,tf[i].readyTime);
-         int turnAroundTime = tf[i].terminationTime - tf[i].creationTime;
-         int WaitingTime = tf[i].readyTime;
-         int cbt = tf[i].runningTime ;
+         ,i,pids[i],t[i].creationTime,t[i].terminationTime,t[i].sleepingTime,t[i].readyTime);
+         int turnAroundTime = t[i].terminationTime - t[i].creationTime;
+         int WaitingTime = t[i].readyTime;
+         int cbt = t[i].runningTime ;
          turnAroundTimeAvg+=turnAroundTime;
          cbtAvg += cbt;
          WaitingTimeAvg += WaitingTime;
@@ -82,9 +87,9 @@ uint cbtAvg = 0;
          int cbt = 0;
          printf(1,"___________________________________________________\nsame priority of : %d \n",5-i);
         for(int j=0;j<5;j++){
-          turnAroundTime += tf[i*5+j].terminationTime - tf[i*5+j].creationTime;
-          WaitingTime += tf[i*5+j].readyTime;
-          cbt += tf[i*5+j].runningTime;    
+          turnAroundTime += t[i*5+j].terminationTime - t[i*5+j].creationTime;
+          WaitingTime += t[i*5+j].readyTime;
+          cbt += t[i*5+j].runningTime;    
         }
         turnAroundTime/=5;
         WaitingTime/=5;
