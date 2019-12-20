@@ -118,8 +118,8 @@ trap(struct trapframe *tf)
 
      if(myproc()->tickcounter >= QUANTUM){
 
-      char str[] = "...............................................\n";
-       cprintf("\n%s changed ...%d%s%s%s%s%s%s\n",myproc()->name,myproc()->tickcounter,str,str,str,str,str,str);
+      // char str[] = "...............................................\n";
+      //  cprintf("\n%s changed ...%d%s%s%s%s%s%s\n",myproc()->name,myproc()->tickcounter,str,str,str,str,str,str);
         yield();
      }
       myproc()->tickcounter++;
