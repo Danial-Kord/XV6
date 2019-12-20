@@ -1,443 +1,414 @@
 Process : 0 
-->>>>>>>>>>>>>>>>>
-pid : 4
-creationTime : 439
-terminationTime : 3381
-sleepiing : 305
-readytime :2413
 
-____________________________________
-TurnAroundTime : 2942
-WaitingTime : 2413
-CBT : 224
+pid : 25
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 1 
-->>>>>>>>>>>>>>>>>
-pid : 5
-creationTime : 439
-terminationTime : 3451
-sleepiing : 312
-readytime :2481
 
-____________________________________
-TurnAroundTime : 3012
-WaitingTime : 2481
-CBT : 218
+pid : 24
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 2 
-->>>>>>>>>>>>>>>>>
-pid : 6
-creationTime : 441
-terminationTime : 3474
-sleepiing : 318
-readytime :2518
 
-____________________________________
-TurnAroundTime : 3033
-WaitingTime : 2518
-CBT : 197
+pid : 26
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 3 
-->>>>>>>>>>>>>>>>>
-pid : 7
-creationTime : 441
-terminationTime : 3507
-sleepiing : 324
-readytime :2567
 
-____________________________________
-TurnAroundTime : 3066
-WaitingTime : 2567
-CBT : 175
+pid : 28
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 4 
-->>>>>>>>>>>>>>>>>
-pid : 8
-creationTime : 441
-terminationTime : 3559
-sleepiing : 319
-readytime :2598
 
-____________________________________
-TurnAroundTime : 3118
-WaitingTime : 2598
-CBT : 196
+pid : 27
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 5 
-->>>>>>>>>>>>>>>>>
-pid : 9
-creationTime : 446
-terminationTime : 3407
-sleepiing : 321
-readytime :2370
 
-____________________________________
-TurnAroundTime : 2961
-WaitingTime : 2370
-CBT : 266
+pid : 19
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 6 
-->>>>>>>>>>>>>>>>>
-pid : 10
-creationTime : 450
-terminationTime : 3376
-sleepiing : 335
-readytime :2396
 
-____________________________________
-TurnAroundTime : 2926
-WaitingTime : 2396
-CBT : 194
+pid : 20
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 7 
-->>>>>>>>>>>>>>>>>
-pid : 11
-creationTime : 459
-terminationTime : 3457
-sleepiing : 343
-readytime :2436
 
-____________________________________
-TurnAroundTime : 2998
-WaitingTime : 2436
-CBT : 219
+pid : 22
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 8 
-->>>>>>>>>>>>>>>>>
-pid : 12
-creationTime : 459
-terminationTime : 3261
-sleepiing : 326
-readytime :2282
 
-____________________________________
-TurnAroundTime : 2802
-WaitingTime : 2282
+pid : 23
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
 CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 9 
-->>>>>>>>>>>>>>>>>
-pid : 13
-creationTime : 461
-terminationTime : 3322
-sleepiing : 333
-readytime :2301
 
-____________________________________
-TurnAroundTime : 2861
-WaitingTime : 2301
-CBT : 227
+pid : 21
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 10 
-->>>>>>>>>>>>>>>>>
-pid : 14
-creationTime : 465
-terminationTime : 2760
-sleepiing : 284
-readytime :1755
 
-____________________________________
-TurnAroundTime : 2295
-WaitingTime : 1755
-CBT : 256
+pid : 9
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 11 
-->>>>>>>>>>>>>>>>>
-pid : 15
-creationTime : 468
-terminationTime : 2994
-sleepiing : 313
-readytime :1948
 
-____________________________________
-TurnAroundTime : 2526
-WaitingTime : 1948
-CBT : 260
+pid : 16
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 12 
-->>>>>>>>>>>>>>>>>
-pid : 16
-creationTime : 486
-terminationTime : 3131
-sleepiing : 338
-readytime :2071
 
-____________________________________
-TurnAroundTime : 2645
-WaitingTime : 2071
-CBT : 233
+pid : 12
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 13 
-->>>>>>>>>>>>>>>>>
-pid : 17
-creationTime : 489
-terminationTime : 2995
-sleepiing : 324
-readytime :1915
 
-____________________________________
-TurnAroundTime : 2506
-WaitingTime : 1915
-CBT : 262
+pid : 17
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 14 
-->>>>>>>>>>>>>>>>>
-pid : 18
-creationTime : 494
-terminationTime : 3191
-sleepiing : 326
-readytime :2094
 
-____________________________________
-TurnAroundTime : 2697
-WaitingTime : 2094
-CBT : 272
+pid : 18
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 15 
-->>>>>>>>>>>>>>>>>
-pid : 19
-creationTime : 499
-terminationTime : 1791
-sleepiing : 159
-readytime :867
 
-____________________________________
-TurnAroundTime : 1292
-WaitingTime : 867
-CBT : 266
+pid : 10
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 16 
-->>>>>>>>>>>>>>>>>
-pid : 20
-creationTime : 502
-terminationTime : 2193
-sleepiing : 236
-readytime :1231
 
-____________________________________
-TurnAroundTime : 1691
-WaitingTime : 1231
-CBT : 224
+pid : 4
+creationTime : 414
+terminationTime : 2803
+sleepiing : 227
+readytime :1964
+
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
+
 
 
 Process : 17 
-->>>>>>>>>>>>>>>>>
-pid : 21
-creationTime : 505
-terminationTime : 2243
-sleepiing : 240
-readytime :1281
 
-____________________________________
-TurnAroundTime : 1738
-WaitingTime : 1281
-CBT : 217
+pid : 15
+creationTime : 419
+terminationTime : 2972
+sleepiing : 258
+readytime :2105
+
+TurnAroundTime : 2553
+WaitingTime : 2105
+CBT : 189
 __________________________
-<----------------------------
+
 
 
 Process : 18 
-->>>>>>>>>>>>>>>>>
-pid : 22
-creationTime : 508
-terminationTime : 2190
-sleepiing : 225
-readytime :1234
 
-____________________________________
-TurnAroundTime : 1682
-WaitingTime : 1234
-CBT : 223
+pid : 14
+creationTime : 419
+terminationTime : 2972
+sleepiing : 258
+readytime :2105
+
+TurnAroundTime : 2553
+WaitingTime : 2105
+CBT : 189
 __________________________
-<----------------------------
+
 
 
 Process : 19 
-->>>>>>>>>>>>>>>>>
-pid : 23
-creationTime : 510
-terminationTime : 2329
-sleepiing : 237
-readytime :1336
 
-____________________________________
-TurnAroundTime : 1819
-WaitingTime : 1336
-CBT : 247
+pid : 11
+creationTime : 419
+terminationTime : 2972
+sleepiing : 258
+readytime :2105
+
+TurnAroundTime : 2553
+WaitingTime : 2105
+CBT : 189
 __________________________
-<----------------------------
+
 
 
 Process : 20 
-->>>>>>>>>>>>>>>>>
-pid : 24
-creationTime : 514
-terminationTime : 1329
-sleepiing : 105
-readytime :456
 
-____________________________________
-TurnAroundTime : 815
-WaitingTime : 456
-CBT : 254
+pid : 5
+creationTime : 419
+terminationTime : 2972
+sleepiing : 258
+readytime :2105
+
+TurnAroundTime : 2553
+WaitingTime : 2105
+CBT : 189
 __________________________
-<----------------------------
+
 
 
 Process : 21 
-->>>>>>>>>>>>>>>>>
-pid : 25
-creationTime : 527
-terminationTime : 1157
-sleepiing : 81
-readytime :315
 
-____________________________________
-TurnAroundTime : 630
-WaitingTime : 315
-CBT : 234
+pid : 13
+creationTime : 420
+terminationTime : 3088
+sleepiing : 269
+readytime :2212
+
+TurnAroundTime : 2668
+WaitingTime : 2212
+CBT : 187
 __________________________
-<----------------------------
+
 
 
 Process : 22 
-->>>>>>>>>>>>>>>>>
-pid : 26
-creationTime : 527
-terminationTime : 1278
-sleepiing : 85
-readytime :443
 
-____________________________________
-TurnAroundTime : 751
-WaitingTime : 443
-CBT : 217
+pid : 6
+creationTime : 420
+terminationTime : 3088
+sleepiing : 269
+readytime :2212
+
+TurnAroundTime : 2668
+WaitingTime : 2212
+CBT : 187
 __________________________
-<----------------------------
+
 
 
 Process : 23 
-->>>>>>>>>>>>>>>>>
-pid : 27
-creationTime : 533
-terminationTime : 1237
-sleepiing : 92
-readytime :360
 
-____________________________________
-TurnAroundTime : 704
-WaitingTime : 360
-CBT : 249
+pid : 8
+creationTime : 425
+terminationTime : 3119
+sleepiing : 281
+readytime :2238
+
+TurnAroundTime : 2694
+WaitingTime : 2238
+CBT : 175
 __________________________
-<----------------------------
+
 
 
 Process : 24 
-->>>>>>>>>>>>>>>>>
-pid : 28
-creationTime : 540
-terminationTime : 1238
-sleepiing : 97
-readytime :410
 
-____________________________________
-TurnAroundTime : 698
-WaitingTime : 410
-CBT : 191
+pid : 7
+creationTime : 425
+terminationTime : 3119
+sleepiing : 281
+readytime :2238
+
+TurnAroundTime : 2694
+WaitingTime : 2238
+CBT : 175
 __________________________
-<----------------------------
-___________________________________________________
+
 same priority of : 5 
 
-TurnAroundTime : 3034
-WaitingTime : 2515
-CBT : 202
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
-___________________________________________________
+
 same priority of : 4 
 
-TurnAroundTime : 2909
-WaitingTime : 2357
-CBT : 219
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
-___________________________________________________
+
 same priority of : 3 
 
-TurnAroundTime : 2533
-WaitingTime : 1956
-CBT : 256
+TurnAroundTime : 2389
+WaitingTime : 1964
+CBT : 193
 __________________________
-<----------------------------
-___________________________________________________
+
 same priority of : 2 
 
-TurnAroundTime : 1644
-WaitingTime : 1189
-CBT : 235
+TurnAroundTime : 2487
+WaitingTime : 2048
+CBT : 190
 __________________________
-<----------------------------
-___________________________________________________
+
 same priority of : 1 
 
-TurnAroundTime : 719
-WaitingTime : 396
-CBT : 229
+TurnAroundTime : 2655
+WaitingTime : 2201
+CBT : 182
 __________________________
-<----------------------------
--_-_-_-_-_-_-_-_-
-TT : 2168
-WT : 1683
-CBT : 228
--_-_-_-_-_-_-_-_-
+
+                                    final Results
+                                    -_-_-_-_-_-_-_-_-
+                                    TT : 2461
+                                    WT : 2028
+                                    CBT : 190
+                                    -_-_-_-_-_-_-_-_-
