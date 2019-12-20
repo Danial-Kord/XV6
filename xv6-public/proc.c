@@ -529,7 +529,8 @@ yield(void)
   acquire(&ptable.lock);  //DOC: yieldlock
   myproc()->state = RUNNABLE;
   //DanialKm
-  myproc()->tickcounter = 0;
+  //if(myproc()->tickcounter >= QUANTUM)
+      myproc()->tickcounter = 0;
   sched();
   release(&ptable.lock);
 }

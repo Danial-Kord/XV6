@@ -1,7 +1,7 @@
 #include "types.h"
 #include "stat.h"
 #include "user.h"
-//#include "proc.h"
+#include "param.h"
 
 
 
@@ -9,14 +9,14 @@
 int
 main(int argc, char **argv)
 {
-struct TimeVariables t[10] ;
+struct TimeVariables t[10];
 
 int turnAroundTimeAvg = 0;
 int WaitingTimeAvg = 0;
 uint cbtAvg = 0;
 
 changePolicy(2);
-for (int id=0; id<10; id++) {
+for (int id=0; id<10; id++){
     int f = fork();     
     if (f == 0) {
         int pid = getpid();
@@ -41,7 +41,7 @@ for (int id=0; id<10; id++) {
     }
 
 
-    printf(1,"creationTime:\t terminationTime:\t sleepiing:\treadytime:\t\n");
+    printf(1,"\nQUANTOM : %d\n",QUANTUM);
     for (int i = 0; i < 10; i++)
     {
          printf(1,"\n\nProcess : %d \n->>>>>>>>>>>>>>>>>\ncreationTime : %d\nterminationTime : %d\nsleepiing : %d\nreadytime :%d\nrunningTime :%d\n\n"
@@ -58,8 +58,9 @@ for (int id=0; id<10; id++) {
     turnAroundTimeAvg/=10.0;
     cbtAvg /= 10.0;
     WaitingTimeAvg /= 10.0;
-    printf(1,"-_-_-_-_-_-_-_-_-\nTT : %d\nWT : %d\nCBT : %d\n-_-_-_-_-_-_-_-_-\n"
-,turnAroundTimeAvg,WaitingTimeAvg,cbtAvg);
+    char str[] = "                                           ";
+    printf(1,"Final Results : for quantom %d\n%s -_-_-_-_-_-_-_-_-\n%sTT : %d\n%sWT : %d\n%sCBT : %d\n%s-_-_-_-_-_-_-_-_-\n_______________________________________________________________________________________________"
+,QUANTUM,str,str,turnAroundTimeAvg,str,WaitingTimeAvg,str,cbtAvg,str);
 
 
 exit();
