@@ -1037,174 +1037,175 @@ ________________________________________________________________________________
 
 
 
-QUANTOM : 50000
+QUANTOM : 5000
 
 
 Process : 0 
 ->>>>>>>>>>>>>>>>>
-creationTime : 1337
-terminationTime : 1926
-sleepiing : 19
-readytime :8
-runningTime :562
+creationTime : 465
+terminationTime : 1133
+sleepiing : 23
+readytime :19
+runningTime :626
 
 ____________________________________
-TurnAroundTime : 589
-WaitingTime : 8
-CBT : 562
+TurnAroundTime : 668
+WaitingTime : 19
+CBT : 626
 __________________________
 <----------------------------
 
 
 Process : 1 
 ->>>>>>>>>>>>>>>>>
-creationTime : 1338
-terminationTime : 2051
-sleepiing : 33
-readytime :28
-runningTime :652
+creationTime : 466
+terminationTime : 1171
+sleepiing : 35
+readytime :15
+runningTime :653
 
 ____________________________________
-TurnAroundTime : 713
-WaitingTime : 28
-CBT : 652
+TurnAroundTime : 705
+WaitingTime : 15
+CBT : 653
 __________________________
 <----------------------------
 
 
 Process : 2 
 ->>>>>>>>>>>>>>>>>
-creationTime : 1338
-terminationTime : 2542
-sleepiing : 46
-readytime :554
-runningTime :603
+creationTime : 469
+terminationTime : 1839
+sleepiing : 85
+readytime :619
+runningTime :666
 
 ____________________________________
-TurnAroundTime : 1204
-WaitingTime : 554
-CBT : 603
+TurnAroundTime : 1370
+WaitingTime : 619
+CBT : 666
 __________________________
 <----------------------------
 
 
 Process : 3 
 ->>>>>>>>>>>>>>>>>
-creationTime : 1340
-terminationTime : 2651
-sleepiing : 94
-readytime :662
-runningTime :555
+creationTime : 470
+terminationTime : 1842
+sleepiing : 93
+readytime :640
+runningTime :639
 
 ____________________________________
-TurnAroundTime : 1311
-WaitingTime : 662
-CBT : 555
+TurnAroundTime : 1372
+WaitingTime : 640
+CBT : 639
 __________________________
 <----------------------------
 
 
 Process : 4 
 ->>>>>>>>>>>>>>>>>
-creationTime : 1340
-terminationTime : 3202
-sleepiing : 132
-readytime :1124
-runningTime :603
+creationTime : 470
+terminationTime : 2425
+sleepiing : 149
+readytime :1261
+runningTime :544
 
 ____________________________________
-TurnAroundTime : 1862
-WaitingTime : 1124
-CBT : 603
+TurnAroundTime : 1955
+WaitingTime : 1261
+CBT : 544
 __________________________
 <----------------------------
 
 
 Process : 5 
 ->>>>>>>>>>>>>>>>>
-creationTime : 1346
-terminationTime : 3348
-sleepiing : 151
-readytime :1191
-runningTime :659
+creationTime : 470
+terminationTime : 2600
+sleepiing : 147
+readytime :1263
+runningTime :720
 
 ____________________________________
-TurnAroundTime : 2002
-WaitingTime : 1191
-CBT : 659
+TurnAroundTime : 2130
+WaitingTime : 1263
+CBT : 720
 __________________________
 <----------------------------
 
 
 Process : 6 
 ->>>>>>>>>>>>>>>>>
-creationTime : 1348
-terminationTime : 3902
-sleepiing : 186
-readytime :1717
-runningTime :651
+creationTime : 472
+terminationTime : 3129
+sleepiing : 209
+readytime :1785
+runningTime :662
 
 ____________________________________
-TurnAroundTime : 2554
-WaitingTime : 1717
-CBT : 651
+TurnAroundTime : 2657
+WaitingTime : 1785
+CBT : 662
 __________________________
 <----------------------------
 
 
 Process : 7 
 ->>>>>>>>>>>>>>>>>
-creationTime : 1348
-terminationTime : 3989
-sleepiing : 226
-readytime :1821
-runningTime :594
+creationTime : 474
+terminationTime : 3359
+sleepiing : 236
+readytime :1938
+runningTime :711
 
 ____________________________________
-TurnAroundTime : 2641
-WaitingTime : 1821
-CBT : 594
+TurnAroundTime : 2885
+WaitingTime : 1938
+CBT : 711
 __________________________
 <----------------------------
 
 
 Process : 8 
 ->>>>>>>>>>>>>>>>>
-creationTime : 1348
-terminationTime : 4552
-sleepiing : 276
-readytime :2389
-runningTime :538
+creationTime : 474
+terminationTime : 3820
+sleepiing : 293
+readytime :2414
+runningTime :639
 
 ____________________________________
-TurnAroundTime : 3204
-WaitingTime : 2389
-CBT : 538
+TurnAroundTime : 3346
+WaitingTime : 2414
+CBT : 639
 __________________________
 <----------------------------
 
 
 Process : 9 
 ->>>>>>>>>>>>>>>>>
-creationTime : 1348
-terminationTime : 4576
-sleepiing : 274
-readytime :2330
-runningTime :624
+creationTime : 474
+terminationTime : 4106
+sleepiing : 300
+readytime :2610
+runningTime :722
 
 ____________________________________
-TurnAroundTime : 3228
-WaitingTime : 2330
-CBT : 624
+TurnAroundTime : 3632
+WaitingTime : 2610
+CBT : 722
 __________________________
 <----------------------------
-Final Results : for quantom 50000
+Final Results : for quantom 5000
                                             -_-_-_-_-_-_-_-_-
-                                           TT : 1930
-                                           WT : 1182
-                                           CBT : 604
+                                           TT : 2072
+                                           WT : 1256
+                                           CBT : 658
                                            -_-_-_-_-_-_-_-_-
 _______________________________________________________________________________________________
+
 
 
 
