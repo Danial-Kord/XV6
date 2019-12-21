@@ -63,7 +63,7 @@ struct proc {
   int count[syscallsNum];
   struct TimeVariables timeVariables; 
   int priority;                // process priority
-  int calculated_priority;
+  uint calculated_priority;
   int tickcounter;
   
 };

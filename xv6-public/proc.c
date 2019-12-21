@@ -123,7 +123,13 @@ found:
   }
   cprintf("choosen priority for new process: %d",minPriority);
   p->calculated_priority = minPriority;
-   
+  
+    for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
+  if(p1->state != RUNNABLE&& p1->state != SLEEPING) //choosing the min priority among the sleeping or runnable processes...it can change to just check just the runnables
+    continue;
+  else 
+  p1->calculated_priority-=minPriority;
+  }
   p->priority = 5;//default lowest
 
   release(&ptable.lock);
