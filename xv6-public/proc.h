@@ -44,6 +44,9 @@ struct TimeVariables
 
 enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
+
+
+
 // Per-process state
 struct proc {
   uint sz;                     // Size of process memory (bytes)
@@ -65,9 +68,14 @@ struct proc {
   int priority;                // process priority
   uint calculated_priority;
   int tickcounter;
+  uint ticktNumber;
   
 };
-
+//DanialKm
+struct blocks {
+  struct proc* proc;
+  struct blocks* next;
+}
 // Process memory is laid out contiguously, low addresses first:
 //   text
 //   original data and bss

@@ -10,6 +10,7 @@ struct sleeplock;
 struct stat;
 struct superblock;
 struct TimeVariables;
+struct blocks;
 
 // bio.c
 void            binit(void);
@@ -127,7 +128,8 @@ int             chsp(int);
 int             getPolicy(void);
 void            updateTableTiming(void);
 int             waitForChild(struct TimeVariables*);
-
+void            addNewBlock(struct proc* newProc);
+void            releaseNext(void);
 
 // swtch.S
 void            swtch(struct context**, struct context*);
@@ -138,6 +140,8 @@ void            getcallerpcs(void*, uint*);
 int             holding(struct spinlock*);
 void            initlock(struct spinlock*, char*);
 void            release(struct spinlock*);
+void            myRelease(struct spinlock*);
+void            myAquire(struct spinlock *lk,int maxTicket);
 void            pushcli(void);
 void            popcli(void);
 

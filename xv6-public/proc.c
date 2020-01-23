@@ -9,10 +9,17 @@
 
 struct {
   struct spinlock lock;
+  struct spinlock myLock;
+  struct blocks *  blocks;
+  int maxLock;
   struct proc proc[NPROC];
 } ptable;
 
+
+
+
 static struct proc *initproc;
+
 
 int nextpid = 1;
 int currentPolicy=0;
@@ -25,6 +32,7 @@ void
 pinit(void)
 {
   initlock(&ptable.lock, "ptable");
+  initlock(&ptable.myLock, "blocks");
 }
 
 // Must be called with interrupts disabled
@@ -774,5 +782,57 @@ updateTableTiming(){
         
   }
   
+  release(&ptable.lock);
+}
+void
+addNewBlock(struct proc* newProc){
+    acquire(&ptable.lock);
+    struct blocks* blocks = ptable.blocks;
+    struct blocks* block = malloc(sizeof(struct blocks*));
+    // newProc->ticktNumber = ptable.maxLock;
+    int ticket = newProc->ticktNumber;
+    block->proc = newProc;
+    block->next = -1;
+    struct blocks* cur = blocks;
+    struct blocks* temp = blocks->next;
+    if(blocks != -1){
+      if(temp != -1){
+        do
+        {
+          if(ticket < temp->proc->ticktNumber || temp->next != -1){
+            block->next = temp;
+            cur->next = block;
+            break;
+        }
+          temp = temp->next;
+          cur = cur->next;
+        }while (temp->next != -1);
+      }
+      else
+      {
+        if(blocks->proc->ticktNumber < ticket){
+          block->next = blocks;
+          blocks->next = -1;
+        }
+        else
+        {
+          blocks->next = block;
+        }
+        
+      }
+      
+    }
+    else{
+      // ptable.maxLock = 1;
+      blocks = block;
+    }
+    release(&ptable.lock);
+}
+
+void
+releaseNext(){
+  acquire(&ptable.lock);
+  ptable.blocks = ptable.blocks->next;
+  ptable.blocks->proc->state = RUNNABLE;
   release(&ptable.lock);
 }

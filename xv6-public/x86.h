@@ -130,6 +130,17 @@ xchg(volatile uint *addr, uint newval)
   return result;
 }
 
+
+static inline int 
+fetch_and_add(int *var,int value){
+  asm volatile("lock; xaddl %0 %1"
+    : "+r" , (value),"+m" (*var)
+    :
+    : "memory"
+  );
+  return value;
+}
+
 static inline uint
 rcr2(void)
 {
