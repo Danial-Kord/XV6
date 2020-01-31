@@ -28,7 +28,10 @@
 #define SYS_currentStatus 25
 #define SYS_changePolicy 26
 #define SYS_waitForChild    27
+#define SYS_ticketlockinit    28
+#define SYS_ticketlockTest    29
+#define SYS_rwinit 30
+#define SYS_rwtest 31
 
 
-
-#define syscallsNum     27
+#define syscallsNum     31

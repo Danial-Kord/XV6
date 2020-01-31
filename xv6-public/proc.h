@@ -42,10 +42,7 @@ struct TimeVariables
   int  runningTime;                // process running time
 };
 
-enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
-
-
-
+enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE ,WAITING};
 
 // Per-process state
 struct proc {
@@ -69,15 +66,29 @@ struct proc {
   uint calculated_priority;
   int tickcounter;
   uint ticktNumber;
-  
+  int reader;
 };
-//DanialKm
-struct blocks {
-  struct proc* proc;
-  struct blocks* next;
-}
+
+
 // Process memory is laid out contiguously, low addresses first:
 //   text
 //   original data and bss
 //   fixed-size stack
 //   expandable heap
+struct ticketlock {
+  uint ticket;       // Is the lock held?
+  uint turn;
+  struct proc* proc[20];
+};
+
+struct rw{
+  uint sharedData;
+  int writing;
+  int reading;
+  int size;
+  int job[40];
+  struct ticketlock ticket;
+  int released;
+  int finished;
+  int startReading;
+};

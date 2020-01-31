@@ -17,7 +17,7 @@ int
 sys_getpid(void)
 {
  
-  cprintf("returning PID proccess...\n");
+  
   return myproc()->pid;
 }
 
@@ -25,7 +25,8 @@ int
 sys_fork(void)
 {
   
-  cprintf("forking proccess...\n"); 
+
+  
   int dadPID = sys_getpid();
   addPID(dadPID);
   cprintf("id dad : %d\n",dadPID);
@@ -44,7 +45,7 @@ sys_exit(void)
 {
  
 
-  cprintf("exiting proccess...\n");
+ 
   exit();
   return 0;  // not reached
 }
@@ -54,7 +55,6 @@ sys_wait(void)
 {
   
 
-  cprintf("waiting proccess...\n");
   return wait();
 }
 int
@@ -71,7 +71,7 @@ sys_kill(void)
 {
   
 
-  cprintf("killing proccess...\n");
+ 
   int pid;
   if(argint(0, &pid) < 0)
     return -1;
@@ -85,7 +85,6 @@ sys_sbrk(void)
 {
   
 
-  cprintf("sbrk proccess...\n");
   int addr;
   int n;
 
@@ -102,7 +101,7 @@ sys_sleep(void)
 {
   
 
-  cprintf("sleep proccess...\n");
+
 
   int n;
   uint ticks0;
@@ -129,7 +128,7 @@ sys_uptime(void)
 {
   
 
-  cprintf("uptime proccess...\n");
+
 
   uint xticks;
 
@@ -174,7 +173,7 @@ int
 sys_getChildren(int temp_pid){
  
   argint(0, &temp_pid);
-  cprintf("getChildren proccess...\n");
+
 
 return getChildrenPIDs(temp_pid);
 }
@@ -187,7 +186,7 @@ sys_getCount(int in){
 //  char **a;
 argint(0, &in);
 
-  cprintf("getCount proccess...\n");
+ 
   //cprintf("wtf : %d\n",in);
   //int in=0;
   //fetchstr(in, a);
@@ -199,4 +198,28 @@ argint(0, &in);
      return  myproc()->count[in-1];
   }
   return -1;
+}
+
+int
+sys_ticketlockinit(){
+  initTicket();
+  return 0;
+}
+
+
+int
+sys_ticketlockTest(){
+  return ticketLock();
+}
+int
+sys_rwinit(){
+  rwinit();
+return 0;
+}
+
+int
+sys_rwtest(int in){
+  argint(0, &in);
+  return  rwTest(in);
+
 }

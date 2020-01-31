@@ -114,7 +114,10 @@ extern int sys_changePriority(void);
 extern int sys_currentStatus(void);
 extern int sys_changePolicy(void);
 extern int sys_waitForChild(void);
-
+extern int sys_ticketlockinit(void);
+extern int sys_ticketlockTest(void);
+extern int sys_rwinit(void);
+extern int sys_rwtest(void);
 
 
 
@@ -149,8 +152,10 @@ static int (*syscalls[])(void) = {
 [SYS_currentStatus]    sys_currentStatus,
 [SYS_changePolicy]    sys_changePolicy,
 [SYS_waitForChild]    sys_waitForChild,
-
-
+[SYS_ticketlockinit]    sys_ticketlockinit,
+[SYS_ticketlockTest]    sys_ticketlockTest,
+[SYS_rwinit]    sys_rwinit,
+[SYS_rwtest]    sys_rwtest,
 };
 
 

@@ -35,3 +35,8 @@ SYSCALL(currentStatus)
 SYSCALL(changePolicy)
 SYSCALL(waitForChild)
 SYSCALL(changePriority)
+SYSCALL(ticketlockinit)
+SYSCALL(ticketlockTest)
+SYSCALL(rwinit)
+SYSCALL(rwtest)
+

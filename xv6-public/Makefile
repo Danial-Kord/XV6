@@ -187,6 +187,8 @@ UPROGS=\
 	_chpr\
 	_OriginalSchedTest\
 	_PrioritySchedTest\
+	_lockTest\
+	_rwTest\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
